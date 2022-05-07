@@ -3,7 +3,6 @@ package vip.sujianfeng.enjoydao.interfaces;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import vip.sujianfeng.core.db.DbUtils;
-import vip.sujianfeng.core.define.CallResult;
 
 import javax.sql.DataSource;
 import java.sql.Connection;
@@ -14,7 +13,7 @@ import java.sql.SQLException;
  * @date 2019/12/24 14:35
  **/
 public abstract class JdbcActionTbDao {
-    private static Logger logger = LoggerFactory.getLogger(CallResult.class);
+    private static Logger logger = LoggerFactory.getLogger(JdbcActionTbDao.class);
     private SqlAdapter sqlAdapter;
     /**
      * 线程隔离连接
@@ -56,19 +55,14 @@ public abstract class JdbcActionTbDao {
         }
     }
 
-    public void doTrans(CallResult<?> op, DbAction dbAction){
+    public void doTrans(DbAction dbAction) throws Exception {
         this.beginTrans();
         try{
-            dbAction.doTrans(op);
+            dbAction.doTrans();
+            this.commitTrans();
         }catch (Exception e){
-            logger.error(e.toString(), e);
-            op.error(e.toString());
-        }finally {
-            if (op.isSuccess()){
-                this.commitTrans();
-            }else{
-                this.rollBackTrans();
-            }
+            this.rollBackTrans();
+            throw e;
         }
     }
 
