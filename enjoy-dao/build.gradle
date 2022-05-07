@@ -35,6 +35,7 @@ publishing {
     }
     repositories {
         maven {
+            name = "aliyun"
             url = "https://repo.rdc.aliyun.com/repository/80791-snapshot-hbBYsL/"
             credentials {
                 username System.getenv("MAVEN_ALIYUN_USER")
@@ -42,10 +43,19 @@ publishing {
             }
         }
         maven {
+            name = "flp"
             url = "https://dev1024.rmbap.com/nexus/repository/maven-snapshots/"
             credentials {
                 username System.getenv("MAVEN_FLP_USER")
                 password System.getenv("MAVEN_FLP_PASSWORD")
+            }
+        }
+        maven {
+            name = "github"
+            url = "https://maven.pkg.github.com/sujianfeng-vip/enjoy-dao"
+            credentials {
+                username System.getenv("MAVEN_GITHUB_USER")
+                password System.getenv("MAVEN_GITHUB_PASSWORD")
             }
         }
     }
