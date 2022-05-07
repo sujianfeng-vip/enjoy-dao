@@ -1,0 +1,40 @@
+group 'vip.sujianfeng'
+//version '1.0.1'
+version '1.0.0-SNAPSHOT'
+
+apply plugin: 'java'
+apply plugin: 'maven-publish'
+
+sourceCompatibility = '1.8'
+
+dependencies {
+    implementation 'com.fasterxml.jackson.core:jackson-annotations:2.13.2'
+    implementation 'com.alibaba:fastjson:2.0.2'
+    implementation 'org.slf4j:slf4j-api:1.7.36'
+    implementation project(':enjoy-utils')
+}
+
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+task sourceJar(type: Jar) {
+    from sourceSets.main.allJava
+    classifier "sources"
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            groupId project.group
+            artifactId 'enjoydao'
+            version project.version
+            from components.java
+            //配置上传源码
+            artifact sourceJar {
+                classifier "sources"
+            }
+        }
+    }
+}

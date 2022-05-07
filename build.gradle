@@ -1,0 +1,63 @@
+
+subprojects {
+    group 'vip.sujianfeng.enjoydao'
+
+    apply plugin: 'java'
+    apply plugin: 'maven-publish'
+
+    //避免编译出的jar存在中文乱码问题
+    tasks.withType(JavaCompile) {
+        options.encoding = "UTF-8"
+    }
+
+    tasks.withType(Jar) {
+        //$rootDir 取项目的顶级目录
+        destinationDir = file("$rootDir/jars/newest")
+    }
+
+    configurations.all {
+        resolutionStrategy.cacheChangingModulesFor 0, 'seconds'
+    }
+
+    repositories {
+
+
+        maven {
+            url 'https://maven.aliyun.com/repository/public'
+        }
+        maven {
+            credentials {
+                username System.getenv("MAVEN_ALIYUN_USER")
+                password System.getenv("MAVEN_ALIYUN_PASSWORD")
+            }
+            url 'https://repo.rdc.aliyun.com/repository/80791-release-vEhjrc/'
+        }
+        maven {
+            credentials {
+                username System.getenv("MAVEN_ALIYUN_USER")
+                password System.getenv("MAVEN_ALIYUN_PASSWORD")
+            }
+            url 'https://repo.rdc.aliyun.com/repository/80791-snapshot-hbBYsL/'
+        }
+        mavenCentral()
+    }
+
+
+    publishing {
+        repositories {
+            maven {
+                //阿里云私服仓库
+                url = "https://repo.rdc.aliyun.com/repository/80791-snapshot-hbBYsL/"
+                //认证用户和密码
+                credentials {
+                    username System.getenv("MAVEN_ALIYUN_USER")
+                    password System.getenv("MAVEN_ALIYUN_PASSWORD")
+                }
+            }
+        }
+    }
+
+
+
+
+}

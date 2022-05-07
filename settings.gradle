@@ -1,0 +1,3 @@
+rootProject.name = 'enjoy-dao'
+include 'enjoy-utils'
+include 'enjoy-dao'
