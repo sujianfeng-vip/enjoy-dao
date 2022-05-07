@@ -1,11 +1,8 @@
 group 'vip.sujianfeng'
-//version '1.0.1'
 version '1.0.0-SNAPSHOT'
 
 apply plugin: 'java'
 apply plugin: 'maven-publish'
-
-sourceCompatibility = '1.8'
 
 dependencies {
     implementation 'com.fasterxml.jackson.core:jackson-annotations:2.13.2'
@@ -13,7 +10,6 @@ dependencies {
     implementation 'org.slf4j:slf4j-api:1.7.36'
     implementation project(':enjoy-utils')
 }
-
 
 tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
@@ -34,6 +30,22 @@ publishing {
             //配置上传源码
             artifact sourceJar {
                 classifier "sources"
+            }
+        }
+    }
+    repositories {
+        maven {
+            url = "https://repo.rdc.aliyun.com/repository/80791-snapshot-hbBYsL/"
+            credentials {
+                username System.getenv("MAVEN_ALIYUN_USER")
+                password System.getenv("MAVEN_ALIYUN_PASSWORD")
+            }
+        }
+        maven {
+            url = "https://dev1024.rmbap.com/nexus/repository/maven-snapshots/"
+            credentials {
+                username System.getenv("MAVEN_FLP_USER")
+                password System.getenv("MAVEN_FLP_PASSWORD")
             }
         }
     }

@@ -20,44 +20,9 @@ subprojects {
     }
 
     repositories {
-
-
         maven {
             url 'https://maven.aliyun.com/repository/public'
         }
-        maven {
-            credentials {
-                username System.getenv("MAVEN_ALIYUN_USER")
-                password System.getenv("MAVEN_ALIYUN_PASSWORD")
-            }
-            url 'https://repo.rdc.aliyun.com/repository/80791-release-vEhjrc/'
-        }
-        maven {
-            credentials {
-                username System.getenv("MAVEN_ALIYUN_USER")
-                password System.getenv("MAVEN_ALIYUN_PASSWORD")
-            }
-            url 'https://repo.rdc.aliyun.com/repository/80791-snapshot-hbBYsL/'
-        }
         mavenCentral()
     }
-
-
-    publishing {
-        repositories {
-            maven {
-                //阿里云私服仓库
-                url = "https://repo.rdc.aliyun.com/repository/80791-snapshot-hbBYsL/"
-                //认证用户和密码
-                credentials {
-                    username System.getenv("MAVEN_ALIYUN_USER")
-                    password System.getenv("MAVEN_ALIYUN_PASSWORD")
-                }
-            }
-        }
-    }
-
-
-
-
 }
