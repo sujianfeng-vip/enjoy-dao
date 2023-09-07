@@ -1,0 +1,10 @@
+.idea
+.gradle
+out
+build
+/jars
+/*.iml
+*.log
+/output/
+/doc/ui编辑器/*.msi
+/tools/*.jar

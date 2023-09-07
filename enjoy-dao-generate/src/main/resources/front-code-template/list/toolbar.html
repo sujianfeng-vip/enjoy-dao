@@ -1,0 +1,15 @@
+<th:block th:fragment="parts">
+    <div class="detailToolBar">
+        <i-form inline >
+            <Row>
+                <form-item>
+                    <i-input v-model="keyword"  placeholder="{{InputKeywordHint}}" style="width: 200px"/>
+                </form-item>
+                <form-item>
+                    <i-button @click = "loadPageData(1);">{{SearchLabel}}</i-button>
+                    <i-button @click = "addNew();">{{AddLabel}}</i-button>
+                </form-item>
+            </Row>
+        </i-form>
+    </div>
+</th:block>

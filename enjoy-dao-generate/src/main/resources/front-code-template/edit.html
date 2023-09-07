@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <th:block th:include="comm/head.html :: include" />
+
+    <script th:inline="javascript">
+        var moduleApi = /*[[${moduleApi}]]*/ "";
+        store.formItem = {}
+        var formItemJson = /*[[${formItemJson}]]*/ "";
+        store.formItem = JSON.parse(formItemJson)
+
+        methods.reset = function() {
+            window.location.reload()
+        }
+
+        methods.save = function() {
+            httpClient.postJson(`/${moduleApi}/save`, store.formItem ,function(op){
+                if (!op.success){
+                    window.vue.$Notice.error({title: '{{SystemError}}', desc: op.message})
+                    setTimeout(function (){
+                        window.vue.$Loading.error();
+                    }, 100)
+                    return;
+                }
+                store.formItem = op.data
+                window.vue.$Notice.info({title: '{{SaveSuccess}}'})
+            })
+        }
+    </script>
+
+</head>
+<body>
+
+<div id="app">
+    <i-form inline :label-width='100' v-model="formItem"  style=''>
+        <Row>
+{{tableColumns}}
+        </Row>
+
+        <Row style="text-align: center">
+            <i-button @click="reset" >{{ResetLabel}}</i-button>
+            <i-button @click="save" type="primary" >{{SaveLabel}}</i-button>
+        </Row>
+    </i-form>
+</div>
+
+</body>
+</html>

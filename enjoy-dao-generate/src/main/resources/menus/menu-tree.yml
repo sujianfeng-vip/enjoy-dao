@@ -1,0 +1,5 @@
+children:
+  - id: phone-mng
+    name: 群控系统
+  - id: robot-mng
+    name: 自动化管理

@@ -1,0 +1,6 @@
+<th:block th:fragment="parts">
+    <i-table highlight-row ref="currentRowTable" :columns="columns" :data="rows"></i-table>
+    <div style="width: 100%; text-align: center">
+        <Page :total="totalSize" :page-size="15" :current="pageNo" show-total @on-change="pageChange"/>
+    </div>
+</th:block>

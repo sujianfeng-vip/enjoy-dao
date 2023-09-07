@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <th:block th:include="comm/head.html :: include" />
+</head>
+<body>
+
+<div id="app">
+    <th:block th:include="${moduleCode} + '/list/data.html' :: parts" />
+    <th:block th:include="${moduleCode} + '/list/methods.html' :: parts" />
+    <th:block th:include="${moduleCode} + '/list/columns.html' :: parts" />
+    <th:block th:include="${moduleCode} + '/list/ready.html' :: parts" />
+    <th:block th:include="${moduleCode} + '/list/toolbar.html' :: parts" />
+    <th:block th:include="${moduleCode} + '/list/table.html' :: parts" />
+</div>
+
+</body>
+</html>

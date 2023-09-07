@@ -1,0 +1,40 @@
+package {{basePackage}}
+
+import vip.sujianfeng.utils.comm.StringUtilsEx
+import com.alibaba.fastjson.JSON
+import io.swagger.annotations.Api
+import org.springframework.stereotype.Controller
+import org.springframework.ui.ModelMap
+import org.springframework.web.bind.annotation.GetMapping
+import org.springframework.web.bind.annotation.RequestParam
+import org.springframework.web.servlet.ModelAndView
+import {{rootPackage}}.base.controller.BaseController
+import {{tableVO}}
+
+/**
+ * @Author GenerateCodeBuilder
+ * @Date {{dateTime}}
+ * @Description {{AutoCreateCanModify}}
+ **/
+@Api(tags = ["{{ViewTitle}}"])
+@Controller
+class {{modelClassName}}ViewController: BaseController() {
+
+    @GetMapping("/{{modelCode}}/list")
+    fun list(): ModelAndView {
+        return ModelAndView("{{modelCode}}/list", ModelMap().apply {
+            this["moduleCode"] = "{{modelCode}}"
+            this["moduleApi"] = "{{moduleApi}}"
+        })
+    }
+
+    @GetMapping("/{{modelCode}}/edit")
+    fun edit(@RequestParam id: String?): ModelAndView {
+        return ModelAndView("{{modelCode}}/edit", ModelMap().apply {
+            this["moduleCode"] = "{{modelCode}}"
+            this["moduleApi"] = "{{moduleApi}}"
+            this["formItemJson"] = if(StringUtilsEx.isEmpty(id)) "{}" else JSON.toJSONString(jdbcTbDao().selectOneByUuId({{modelClassName}}VO::class.java, id))
+        })
+    }
+
+}

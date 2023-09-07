@@ -1,0 +1,17 @@
+.paneTop {
+    -fx-background-color: #dbdde1;
+    -fx-border-color: #c1c1c1;
+    -fx-border-width: 1px;
+    -fx-max-height: 20px;
+}
+
+.userName {
+    color: white;
+}
+
+.paneBottom {
+    -fx-background-color: #dbdde1;
+    -fx-border-color: #c1c1c1;
+    -fx-border-width: 1px;
+}
+

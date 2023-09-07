@@ -1,0 +1,16 @@
+
+
+database:
+  url: jdbc:mysql://hougu-test.mysql.rds.aliyuncs.com:5678/web_log
+  driverClassName: com.mysql.cj.jdbc.Driver
+  username: hougu_erp_dev
+  password: hougu@123
+  database: web_log
+
+modelBuilder:
+  modelBase: vip.sujianfeng.log.models.base.MyModelBase
+  poPath: enjoy-log/src/main/kotlin/vip/sujianfeng/log/models/po
+  voPath: enjoy-log/src/main/kotlin/vip/sujianfeng/log/models/vo
+  ignoreFields: id,bizStatus,createTime,updateTime,state,createUserId,updateUserId,remark,
+  # 不指定时，取全部，指定表名时，只处理这些表，多张表用逗号隔开
+  tableNames:

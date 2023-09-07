@@ -1,0 +1,22 @@
+package {{basePackage}}
+
+import vip.sujianfeng.bi.base.controller.MasterController
+import io.swagger.annotations.Api
+import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.web.bind.annotation.RequestMapping
+import org.springframework.web.bind.annotation.RestController
+import vip.sujianfeng.enjoydao.interfaces.JdbcTbDao
+import vip.sujianfeng.utils.define.CallResult
+import {{modelClassName}}PageParam
+import {{tableVO}}
+
+/**
+ * @Author GenerateCodeBuilder
+ * @Date {{dateTime}}
+ * @Description {{AutoCreateCanModify}}
+ **/
+@Api(tags = ["{{title}}"])
+@RestController
+@RequestMapping("/{{modelCode}}-api")
+class {{modelClassName}}ApiController: MasterController<{{modelClassName}}VO, {{modelClassName}}PageParam>() {
+}

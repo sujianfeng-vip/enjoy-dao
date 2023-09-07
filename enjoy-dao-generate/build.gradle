@@ -1,0 +1,55 @@
+plugins {
+    id 'java'
+}
+
+version '1.0.7'
+
+repositories {
+    mavenCentral()
+}
+
+jar {
+    baseName = "enjoy-dao-ui"
+}
+
+dependencies {
+    compile 'vip.sujianfeng:enjoy-utils:1.0.0-SNAPSHOT'
+    compile 'vip.sujianfeng:enjoy-fxui:1.0.0-SNAPSHOT'
+    compile 'vip.sujianfeng:enjoy-dao:1.0.0-SNAPSHOT'
+    compile 'com.fasterxml.jackson.core:jackson-annotations:2.13.3'
+    compile 'com.alibaba:fastjson:2.0.7'
+    compile 'org.slf4j:slf4j-api:1.7.36'
+    compile 'ch.qos.logback:logback-classic:1.2.3'
+
+    compile 'mysql:mysql-connector-java:8.0.21'
+    compile 'com.alibaba:druid:1.1.17'
+    compile 'vip.sujianfeng:enjoy-data-source:1.0.0-SNAPSHOT'
+
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+}
+
+
+//打成单个可执行jar包
+jar {
+    manifestContentCharset 'utf-8'
+    metadataCharset 'utf-8'
+    manifest {
+        attributes 'Main-Class': 'vip.sujianfeng.enjoydao.fxui.MainApp'
+    }
+    from {
+        configurations.compile.collect {
+            it.isDirectory() ? it : zipTree(it)
+        }
+    }
+}
+
+//将当前jar输出到指定目录
+tasks.withType(Jar) {
+    //$rootDir 取项目的顶级目录
+    destinationDir = file("$rootDir/output/jars")
+}
+
+test {
+    useJUnitPlatform()
+}

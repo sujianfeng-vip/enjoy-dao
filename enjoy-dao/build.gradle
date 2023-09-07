@@ -1,0 +1,61 @@
+def groupName = 'vip.sujianfeng'
+def artifactName = "enjoy-dao"
+def versionName = '1.0.0-SNAPSHOT'
+apply plugin: 'java'
+apply plugin: 'maven-publish'
+apply plugin: 'signing'
+
+
+dependencies {
+    implementation 'vip.sujianfeng:enjoy-utils:1.0.0-SNAPSHOT'
+    implementation 'com.fasterxml.jackson.core:jackson-annotations:2.13.3'
+    implementation 'com.alibaba:fastjson:2.0.7'
+    implementation 'org.slf4j:slf4j-api:1.7.36'
+    implementation 'io.swagger:swagger-annotations:1.5.14'
+
+    testImplementation 'mysql:mysql-connector-java:8.0.21'
+    testImplementation 'com.alibaba:druid:1.1.17'
+    testImplementation 'vip.sujianfeng:enjoy-data-source:1.0.0-SNAPSHOT'
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+task sourceJar(type: Jar) {
+    from sourceSets.main.allJava
+    classifier "sources"
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            groupId groupName
+            artifactId artifactName
+            version versionName
+            from components.java
+            //配置上传源码
+            artifact sourceJar {
+                classifier "sources"
+            }
+        }
+    }
+    def publishUrl= ""
+    if (versionName.endsWith("SNAPSHOT")){
+        publishUrl = project.ext.get("publishUrl_snapshots")
+    }else {
+        publishUrl= project.ext.get("publishUrl_release")
+    }
+    System.out.println("发布地址 => " + publishUrl)
+    System.out.println("发布制品 => " + groupName + ":" + artifactName + ":" + versionName)
+    repositories {
+        mavenLocal()
+        maven {
+            credentials {
+                username System.getenv("sonatypeUsername")
+                password System.getenv("sonatypePassword")
+            }
+            url publishUrl
+        }
+    }
+}

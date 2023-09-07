@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="643.0" prefWidth="1030.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vip.sujianfeng.enjoydao.fxui.formMain.FormEnjoyCodeBuilderController">
+   <children>
+      <BorderPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <top>
+            <ToolBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <items>
+                  <Label text="前后端代码自动生成" />
+               </items>
+            </ToolBar>
+         </top>
+         <center>
+            <TextArea fx:id="txtDemoCodeMasterController" editable="false" prefHeight="603.0" prefWidth="505.0" BorderPane.alignment="CENTER" />
+         </center>
+         <left>
+            <AnchorPane prefHeight="603.0" prefWidth="455.0" BorderPane.alignment="CENTER">
+               <children>
+                  <TextField fx:id="edtTableName" layoutX="122.0" layoutY="22.0" prefHeight="23.0" prefWidth="314.0" promptText="请输入表名...." text="etl_db_source" />
+                  <Label layoutX="17.0" layoutY="26.0" text="表名" />
+                  <Label layoutX="14.0" layoutY="63.0" text="后端代码根目录" />
+                  <TextField fx:id="edtBackPath" layoutX="122.0" layoutY="59.0" prefHeight="23.0" prefWidth="315.0" />
+                  <Label layoutX="14.0" layoutY="97.0" text="前端代码根目录" />
+                  <TextField fx:id="edtFrontPath" layoutX="122.0" layoutY="93.0" prefHeight="23.0" prefWidth="315.0" />
+                  <Button layoutX="122.0" layoutY="182.0" mnemonicParsing="false" onMouseClicked="#clickBuild" prefHeight="42.0" prefWidth="168.0" text="生成" />
+                  <CheckBox fx:id="chkCoverIfExist" layoutX="122.0" layoutY="140.0" mnemonicParsing="false" text="文件存在时覆盖" />
+               </children>
+            </AnchorPane>
+         </left>
+      </BorderPane>
+   </children>
+</AnchorPane>
