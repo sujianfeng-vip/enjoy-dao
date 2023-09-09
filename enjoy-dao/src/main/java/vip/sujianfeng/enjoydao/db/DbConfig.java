@@ -1,8 +1,8 @@
 package vip.sujianfeng.enjoydao.db;
 
 /**
- * @Author SuJianFeng
- * @Date 2019/5/27 15:05
+ * author SuJianFeng
+ * createTime 2019/5/27 15:05
  **/
 public class DbConfig {
 

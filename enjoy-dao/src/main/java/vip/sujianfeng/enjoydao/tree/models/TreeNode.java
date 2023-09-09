@@ -1,29 +1,18 @@
 package vip.sujianfeng.enjoydao.tree.models;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
-
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @Author SuJianFeng
- * @Date 2022/9/22
- * @Description
+ * author SuJianFeng
+ * createTime 2022/9/22
  **/
-@ApiModel(description = "树节点")
 public class TreeNode<T extends TreeData> {
-    @ApiModelProperty("值")
     private String value;
-    @ApiModelProperty("父id")
     private String parentId;
-    @ApiModelProperty("标题")
     private String title;
-    @ApiModelProperty("是否勾选")
     private boolean checked;
-    @ApiModelProperty("是否展开")
     private boolean expand;
-    @ApiModelProperty("子集")
     private List<TreeNode<T>> children;
     private T data;
 

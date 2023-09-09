@@ -19,9 +19,8 @@ import java.util.List;
 import java.util.Optional;
 
 /**
- * @Author SuJianFeng
- * @Date 2022/9/22
- * @Description
+ * author SuJianFeng
+ * createTime 2022/9/22
  **/
 public class TreeCycleTask extends ThreadCycleTask {
 
@@ -56,7 +55,7 @@ public class TreeCycleTask extends ThreadCycleTask {
     }
 
     public TreeCycleTask(TbDao tbDao, TreeDataCache treeDataCache, TreeDefine... treeDefineList) {
-        super("树缓存数据");
+        super("Tree Cache Data");
         this.treeDataCache = treeDataCache;
         this.tbDao = tbDao;
         this.treeDefineList = new ArrayList<>(Arrays.asList(treeDefineList));
@@ -81,7 +80,7 @@ public class TreeCycleTask extends ThreadCycleTask {
         }
         if (treeData != null) {
             this.treeDataCache.put(tTreeDefine, treeData);
-            logger.info("[{}/{}]同步完成!", tTreeDefine.getKey(), tTreeDefine.getTitle());
+            logger.info("[{}/{}]Sync completed!", tTreeDefine.getKey(), tTreeDefine.getTitle());
         }
     }
 

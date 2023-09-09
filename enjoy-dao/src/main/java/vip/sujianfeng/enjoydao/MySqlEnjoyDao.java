@@ -3,9 +3,9 @@ package vip.sujianfeng.enjoydao;
 import javax.sql.DataSource;
 
 /**
- * @Author SuJianFeng
- * @Date 2022/10/17
- * @Description
+ * author SuJianFeng
+ * createTime 2022/10/17
+ * description
  **/
 public class MySqlEnjoyDao extends AbstractMySqlEnjoyDao {
 

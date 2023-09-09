@@ -8,9 +8,9 @@ import java.util.Map;
 
 /**
  * 泛型实际类缓存工具类
- * @Author SuJianFeng
- * @Date 2022/12/2
- * @Description
+ * author SuJianFeng
+ * createTime 2022/12/2
+ * description
  **/
 public class TypeMapUtils {
     public static Map<String, Type> TYPE_MAP = new HashMap<>();

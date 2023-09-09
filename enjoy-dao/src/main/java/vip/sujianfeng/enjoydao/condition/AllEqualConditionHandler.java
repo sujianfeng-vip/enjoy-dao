@@ -9,9 +9,9 @@ import java.util.Map;
 import java.util.Objects;
 
 /**
- * @Author Xiao-Bai
- * @Date 2022/7/21 0021 14:44
- * @Desc 全等条件解析处理
+ * author Xiao-Bai
+ * createTime 2022/7/21 0021 14:44
+ * desc Complete condition parsing processing
  */
 public class AllEqualConditionHandler<T> {
 
@@ -27,9 +27,6 @@ public class AllEqualConditionHandler<T> {
         this.fieldMapper = conditionWrapper.getTableSupport().fieldMap();
     }
 
-    /**
-     * 条件拼接
-     */
     public void allExecEqCondition() {
         try {
             Map<String, Object> parseMap = ReflectUtil.beanToMap(entity);

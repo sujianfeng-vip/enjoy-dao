@@ -5,10 +5,9 @@ import vip.sujianfeng.utils.comm.StringBuilderEx;
 import java.util.Map;
 
 /**
- * 名称占位符Sql表达式接口订阅
- * @Author SuJianFeng
- * @Date 2022/10/26
- * @Description
+ * Name Placeholder Sql Expression Interface Subscription
+ * author SuJianFeng
+ * createTime 2022/10/26
  **/
 public interface ISqlNameSeatBuilder {
     StringBuilderEx getExpression();

@@ -1,13 +1,13 @@
 def groupName = 'vip.sujianfeng'
 def artifactName = "enjoy-dao"
-def versionName = '1.0.0-SNAPSHOT'
+def versionName = '1.0.1'
 apply plugin: 'java'
 apply plugin: 'maven-publish'
 apply plugin: 'signing'
 
 
 dependencies {
-    implementation 'vip.sujianfeng:enjoy-utils:1.0.0-SNAPSHOT'
+    implementation 'vip.sujianfeng:enjoy-utils:1.0.1'
     implementation 'com.fasterxml.jackson.core:jackson-annotations:2.13.3'
     implementation 'com.alibaba:fastjson:2.0.7'
     implementation 'org.slf4j:slf4j-api:1.7.36'
@@ -15,7 +15,7 @@ dependencies {
 
     testImplementation 'mysql:mysql-connector-java:8.0.21'
     testImplementation 'com.alibaba:druid:1.1.17'
-    testImplementation 'vip.sujianfeng:enjoy-data-source:1.0.0-SNAPSHOT'
+    testImplementation 'vip.sujianfeng:enjoy-data-source:1.0.1'
 }
 
 tasks.withType(JavaCompile) {
@@ -26,6 +26,13 @@ task sourceJar(type: Jar) {
     from sourceSets.main.allJava
     classifier "sources"
 }
+
+
+task javaDocJar(type: Jar) {
+    classifier "javadoc"
+    from javadoc
+}
+
 
 publishing {
     publications {
@@ -38,6 +45,33 @@ publishing {
             artifact sourceJar {
                 classifier "sources"
             }
+            artifact javaDocJar {
+                classifier "javadoc"
+            }
+            // https://docs.gradle.org/current/dsl/org.gradle.api.publish.maven.MavenPublication.html
+            pom {
+                name = artifactName
+                description = "Enjoy the Java public tool library"
+                url = "https://github.com/sujianfeng-vip/enjoy-library"
+                licenses {
+                    license {
+                        name = "The Apache License, Version 2.0"
+                        url = "https://www.apache.org/licenses/LICENSE-2.0.txt"
+                    }
+                }
+                developers {
+                    developer {
+                        id = "sujianfeng"
+                        name = "sujianfeng"
+                        email = "360482507@qq.com"
+                    }
+                }
+                scm {
+                    connection = "scm:https://github.com/sujianfeng-vip/enjoy-library.git"
+                    developerConnection = "scm:https://github.com/sujianfeng-vip/enjoy-library.git"
+                    url = "https://github.com/sujianfeng-vip/enjoy-library"
+                }
+            }
         }
     }
     def publishUrl= ""
@@ -46,10 +80,8 @@ publishing {
     }else {
         publishUrl= project.ext.get("publishUrl_release")
     }
-    System.out.println("发布地址 => " + publishUrl)
-    System.out.println("发布制品 => " + groupName + ":" + artifactName + ":" + versionName)
     repositories {
-        mavenLocal()
+        // mavenLocal()
         maven {
             credentials {
                 username System.getenv("sonatypeUsername")
@@ -58,4 +90,9 @@ publishing {
             url publishUrl
         }
     }
+}
+
+//签名配置，注意这里的顺序，必须在 publishing 配置之后
+signing {
+    sign publishing.publications.mavenJava
 }

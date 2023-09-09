@@ -9,9 +9,8 @@ import org.slf4j.LoggerFactory;
 import java.lang.reflect.Field;
 
 /**
- * @Author SuJianFeng
- * @Date 2019/1/30 11:45
- * 数据库表定义
+ * author SuJianFeng
+ * createTime 2019/1/30 11:45
  **/
 public class TbTableSql extends TbTableBaseSql {
     private static Logger logger = LoggerFactory.getLogger(TbTableSql.class);
@@ -50,7 +49,7 @@ public class TbTableSql extends TbTableBaseSql {
         this.t = t;
         this.model = model;
         this.setDefineTable(TbDefineTable.instance(t));
-        if (getDefineTable() == null) throw new RuntimeException(String.format("%s: 缺少@TbTable注解", t.getName()));
+        if (getDefineTable() == null) throw new RuntimeException(String.format("%s: Missing @TbTable annotation", t.getName()));
         this.setTableName(this.getDefineTable().getTableName());
         this.setTableAlias(this.getDefineTable().getTableAlias());
         initField(t);
@@ -61,57 +60,46 @@ public class TbTableSql extends TbTableBaseSql {
         Field[] fields = tmpClass.getDeclaredFields();
         for (Field field : fields){
             try {
-                //主键字段
                 TbKeyField tbKeyField = field.getAnnotation(TbKeyField.class);
                 if (tbKeyField != null){
                     this.setKeyField(TbDefineField.instance(this, field, tbKeyField));
                 }
-                //uuid字段
                 TbFieldUuid tbFieldUuid = field.getAnnotation(TbFieldUuid.class);
                 if (tbFieldUuid != null){
                     TbDefineField.instance(this, field, tbFieldUuid);
                 }
-                //LongIntId字段
                 TbFieldLongIntId tbFieldLongIntId = field.getAnnotation(TbFieldLongIntId.class);
                 if (tbFieldLongIntId != null){
                     TbDefineField.instance(this, field, tbFieldLongIntId);
                 }
-                //long字段
                 TbFieldLong tbFieldLong= field.getAnnotation(TbFieldLong.class);
                 if (tbFieldLong != null){
                     TbDefineField.instance(this, field, tbFieldLong);
                 }
-                //int字段
                 TbFieldInt tbFieldInt = field.getAnnotation(TbFieldInt.class);
                 if (tbFieldInt != null){
                     TbDefineField.instance(this, field, tbFieldInt);
                 }
-                //String字段
                 TbFieldString tbFieldString = field.getAnnotation(TbFieldString.class);
                 if (tbFieldString != null){
                     TbDefineField.instance(this, field, tbFieldString);
                 }
-                //Timestamp字段
                 TbFieldTimestamp tbFieldTimestamp = field.getAnnotation(TbFieldTimestamp.class);
                 if (tbFieldTimestamp != null){
                     TbDefineField.instance(this, field, tbFieldTimestamp);
                 }
-                //Boolean字段
                 TbFieldBoolean tbFieldBoolean = field.getAnnotation(TbFieldBoolean.class);
                 if (tbFieldBoolean != null){
                     TbDefineField.instance(this, field, tbFieldBoolean);
                 }
-                //普通字段
                 TbField tbField = field.getAnnotation(TbField.class);
                 if (tbField != null){
                     TbDefineField.instance(this, field, tbField);
                 }
-                //关联字段
                 TbRelationField rlsField = field.getAnnotation(TbRelationField.class);
                 if (rlsField != null){
                     TbDefineRelationField.instance(this, field, rlsField);
                 }
-                //表达式字段
                 TbExpressionField expressionField = field.getAnnotation(TbExpressionField.class);
                 if (expressionField != null) {
                     TbDefineExpressionField.instance(this, field, expressionField);

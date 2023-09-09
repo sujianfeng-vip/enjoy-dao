@@ -7,8 +7,8 @@ import vip.sujianfeng.enjoydao.annotations.*;
 import vip.sujianfeng.enjoydao.enums.TbDefineFieldType;
 
 /**
- * @author Xiao-Bai
- * @date 2022/12/7 0007 9:34
+ * author Xiao-Bai
+ * createTime 2022/12/7 0007 9:34
  */
 @ApiModel("套系订单PO")
 @TbTableUuid(
@@ -165,10 +165,10 @@ public class OrderInfo extends AbstractBizModel {
         )
         
         private Integer orderTime;
-        @ApiModelProperty("订单类型： 0-婚纱照，1-微视频，2-写真，3-儿童，4-全家福")
+        @ApiModelProperty("订单类型: 0-婚纱照，1-微视频，2-写真，3-儿童，4-全家福")
         @TbFieldInt(
                 tableField = "order_type",
-                label = "订单类型： 0-婚纱照，1-微视频，2-写真，3-儿童，4-全家福"
+                label = "订单类型: 0-婚纱照，1-微视频，2-写真，3-儿童，4-全家福"
         )
         
         private Integer orderType;

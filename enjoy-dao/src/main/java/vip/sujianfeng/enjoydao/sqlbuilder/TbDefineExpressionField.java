@@ -5,9 +5,8 @@ import vip.sujianfeng.enjoydao.annotations.TbExpressionField;
 import java.lang.reflect.Field;
 
 /**
- * @Author SuJianFeng
- * @Date 2022/5/9
- * @Description 表达式字段
+ * author SuJianFeng
+ * createTime 2022/5/9
  **/
 public class TbDefineExpressionField {
 

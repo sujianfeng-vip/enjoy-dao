@@ -17,9 +17,8 @@ import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
- * @Author Xiao-Bai
- * @Date 2022/3/3 14:45
- * @Desc：解析Function函数中字段名称
+ * author Xiao-Bai
+ * createTime 2022/3/3 14:45
  **/
 public class DefaultColumnParseHandler<T> implements ColumnParseHandler<T> {
 
@@ -30,9 +29,6 @@ public class DefaultColumnParseHandler<T> implements ColumnParseHandler<T> {
     private final Map<String, String> fieldMapper;
     private final TableSupport tableSupport;
 
-    /**
-     * 表中对字段的映射
-     */
     private final static Map<String, Map<String, ColumnFieldCache>> COLUMN_CACHE = new ConcurrentHashMap<>();
 
     public DefaultColumnParseHandler(Class<T> thisClass, TableSupport tableSupport) {
@@ -43,10 +39,6 @@ public class DefaultColumnParseHandler<T> implements ColumnParseHandler<T> {
 
     }
 
-
-    /**
-     * 创建表与字段的映射缓存
-     */
     public Map<String, ColumnFieldCache> createColumnCache() {
         Map<String, ColumnFieldCache> cacheMap = new HashMap<>();
         List<PropertyDescriptor> properties = null;
@@ -55,7 +47,7 @@ public class DefaultColumnParseHandler<T> implements ColumnParseHandler<T> {
         } catch (IntrospectionException e) {
             log.error(e.toString(), e);
         }
-        Asserts.notNull(properties, thisClass.getName() + "读取的属性为空");
+        Asserts.notNull(properties, thisClass.getName() + "The property read is empty");
         for (PropertyDescriptor property : properties) {
             String getter = property.getReadMethod().getName();
             String field = property.getName();
@@ -78,9 +70,6 @@ public class DefaultColumnParseHandler<T> implements ColumnParseHandler<T> {
         return this.fieldList;
     }
 
-    /**
-     * 获取java属性字段
-     */
     @Override
     public String parseToField(SFunction<T, ?> func) {
         Asserts.notNull(func);
@@ -97,10 +86,6 @@ public class DefaultColumnParseHandler<T> implements ColumnParseHandler<T> {
         return fieldCache.getField();
     }
 
-
-    /**
-     * 获取java属性字段对应的表字段
-     */
     @Override
     public String parseToColumn(SFunction<T, ?> func) {
         String field = parseToField(func);

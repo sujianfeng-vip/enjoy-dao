@@ -14,9 +14,9 @@ import javax.sql.rowset.JdbcRowSet;
 import java.util.List;
 
 /**
- * @Author SuJianFeng
- * @Date 2022/9/2
- * @Description
+ * author SuJianFeng
+ * createTime 2022/9/2
+ * description
  **/
 public class BuildModelPoUtils {
 
@@ -30,9 +30,9 @@ public class BuildModelPoUtils {
                 .appendRow("import vip.sujianfeng.enjoydao.enums.*")
                 .appendRow("")
                 .appendRow("/**")
-                .appendRow(" * @Author GenerateModelBuilder")
-                //.appendRow(" * @Date " + DateTimeUtils.getDateTimeShow())
-                .appendRow(" * @Description 读取数据库生成的实体模型代码，不要手动修改，重新生成后会覆盖")
+                .appendRow(" * author GenerateModelBuilder")
+                //.appendRow(" * createTime " + DateTimeUtils.getDateTimeShow())
+                .appendRow(" * description 读取数据库生成的实体模型代码，不要手动修改，重新生成后会覆盖")
                 .appendRow(" **/")
                 .appendFR("@ApiModel(\"%sPO\")", table.getTableComment())
                 .appendFR("@TbTableUuid(table = \"%s\")", table.getTableName())

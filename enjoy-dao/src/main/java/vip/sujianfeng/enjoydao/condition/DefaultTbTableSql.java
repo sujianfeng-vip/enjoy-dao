@@ -11,8 +11,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * @author Xiao-Bai
- * @date 2022/12/6 0006 17:51
+ * author Xiao-Bai
+ * createTime 2022/12/6 0006 17:51
  */
 public class DefaultTbTableSql extends TbTableSql {
 

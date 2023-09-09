@@ -7,9 +7,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @Author SuJianFeng
- * @Date 2022/9/21
- * @Description
+ * author SuJianFeng
+ * createTime 2022/9/21
+ * description
  **/
 @ApiModel(description = "多个主键参数")
 public class ManyIdParam {

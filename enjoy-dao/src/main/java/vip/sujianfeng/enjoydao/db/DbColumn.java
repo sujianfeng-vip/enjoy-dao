@@ -1,9 +1,9 @@
 package vip.sujianfeng.enjoydao.db;
 
 /**
- * @Author SuJianFeng
- * @Date 2023/6/25
- * @Description
+ * author SuJianFeng
+ * createTime 2023/6/25
+ * description
  **/
 public class DbColumn {
     private String tableName;

@@ -7,9 +7,9 @@ import vip.sujianfeng.enjoydao.tree.models.TreeNode;
 import java.util.List;
 
 /**
- * @Author SuJianFeng
- * @Date 2022/9/22
- * @Description
+ * author SuJianFeng
+ * createTime 2022/9/22
+ * description
  **/
 public interface BuildTree {
     List<TreeNode<?>> build(TbDao tbDao, TreeDefine treeDefine);

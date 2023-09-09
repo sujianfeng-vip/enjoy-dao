@@ -14,26 +14,16 @@ import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
- * @author Xiao-Bai
- * @date 2022/8/26 23:58
- * @desc lambda 表达式解析
+ * author Xiao-Bai
+ * createTime 2022/8/26 23:58
  */
 
 public final class LambdaUtil {
 
     private static final Logger log = LoggerFactory.getLogger(LambdaUtil.class);
 
-    /**
-     * FUNCTION 函数的缓存
-     */
     private final static Map<String, WeakReference<SerializedLambda>> FUNCTION_CACHE = new ConcurrentHashMap<>();
 
-    /**
-     * 解析 Lambda 表达式, 从SFunction中获取序列化的信息
-     * @param function 表达式
-     * @param <T> 对象类型
-     * @return {@link SerializedLambda}
-     */
     public static <T> SerializedLambda resolve(SFunction<T, ?> function) {
         Class<?> aClass = function.getClass();
         String canonicalName = aClass.getCanonicalName();
@@ -46,9 +36,6 @@ public final class LambdaUtil {
                 });
     }
 
-    /**
-     * 解析函数
-     */
     private static <T> SerializedLambda startParse(SFunction<T, ?> function) {
         SerializedLambda serializedLambda = null;
         Method writeMethod;
@@ -64,17 +51,11 @@ public final class LambdaUtil {
         }
 
         if (Objects.isNull(serializedLambda)) {
-            throw new CustomCheckException("Unable to parse：" + function);
+            throw new CustomCheckException("Unable to parse: " + function);
         }
         return serializedLambda;
     }
 
-    /**
-     * 解析 Lambda 表达式
-     * @param function 表达式
-     * @param <T> 对象类型
-     * @return 对象class类
-     */
     @SuppressWarnings("unchecked")
     public static <T> Class<T> getImplClass(SFunction<T, ?> function) {
         SerializedLambda serializedLambda = resolve(function);
@@ -86,29 +67,19 @@ public final class LambdaUtil {
         return null;
     }
 
-    /**
-     * 获取lambda表达式函数的引用方法名
-     * @param function 函数表达式
-     * @param <T>
-     * @return 方法名称
-     */
+
     public static <T> String getImplMethodName(SFunction<T, ?> function) {
         SerializedLambda serializedLambda = resolve(function);
         return serializedLambda.getImplMethodName();
     }
 
-    /**
-     * 获取lambda表达式函数的引用方法返回类型
-     * @param function 函数表达式
-     * @param <T>
-     * @return 方法返回类型:?
-     */
+
     public static <T> Class<?> getImplFuncType(SFunction<T, ?> function) {
         SerializedLambda serializedLambda = resolve(function);
         String implMethodSignature = serializedLambda.getImplMethodSignature();
         if (implMethodSignature.length() <= 5 && !implMethodSignature.contains("/")) {
             String implMethodName = serializedLambda.getImplMethodName();
-            log.error(implMethodName + " ==> 该方法或方法对应的属性使用了基础类型，会造成无法解析，请将属性或方法的返回值换成基础类型对应的包装类");
+            log.error(implMethodName + " ==> The property corresponding to this method or method uses a base type, which may cause it to be unresolved. Please replace the return value of the property or method with the wrapper class corresponding to the base type");
         }
         implMethodSignature = implMethodSignature.substring(3, implMethodSignature.indexOf(";"));
         try {

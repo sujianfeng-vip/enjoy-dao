@@ -7,9 +7,9 @@ import vip.sujianfeng.enjoydao.tree.models.TreeNode;
 import java.util.List;
 
 /**
- * @Author SuJianFeng
- * @Date 2022/10/11
- * @Description
+ * author SuJianFeng
+ * createTime 2022/10/11
+ * description
  **/
 @ApiModel("树节点过滤器")
 public interface TreeNodeFilter<T extends TreeData> {

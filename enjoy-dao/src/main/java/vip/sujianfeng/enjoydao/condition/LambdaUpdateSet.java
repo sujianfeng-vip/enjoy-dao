@@ -5,9 +5,8 @@ import vip.sujianfeng.enjoydao.condition.utils.lambda.SFunction;
 import java.util.function.Consumer;
 
 /**
- * @Author Xiao-Bai
- * @Date 2022/8/6 18:06
- * @Desc
+ * author Xiao-Bai
+ * createTime 2022/8/6 18:06
  */
 public class LambdaUpdateSet<T> extends AbstractUpdateSet<T>
         implements UpdateSet<LambdaUpdateSet<T>, UpdateSqlSet<SFunction<T, ?>, LambdaUpdateSetSqlSetter<T>>, LambdaConditionWrapper<T>> {

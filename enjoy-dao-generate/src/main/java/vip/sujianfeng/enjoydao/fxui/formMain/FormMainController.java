@@ -9,8 +9,8 @@ import vip.sujianfeng.fxui.forms.base.FxBaseController;
 
 
 /**
- * @author SuJianFeng
- * @date 2019/9/4 7:25
+ * author SuJianFeng
+ * createTime 2019/9/4 7:25
  **/
 @FxForm(value = "/fxml/formMain/formMain.fxml", title = "主页面")
 public class FormMainController extends FxBaseController {

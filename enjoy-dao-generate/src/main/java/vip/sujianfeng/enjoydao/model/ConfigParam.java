@@ -4,9 +4,9 @@ import com.alibaba.fastjson.JSON;
 import vip.sujianfeng.datasource.DruidConfig;
 
 /**
- * @Author SuJianFeng
- * @Date 2022/9/23
- * @Description
+ * author SuJianFeng
+ * createTime 2022/9/23
+ * description
  **/
 public class ConfigParam {
     private DruidConfig database;

@@ -13,78 +13,41 @@ import java.io.Serializable;
 import java.util.*;
 
 /**
- * @author Xiao-Bai
- * @date 2022/3/5 23:07
- * @desc:查询条件储存
+ * author Xiao-Bai
+ * createTime 2022/3/5 23:07
  */
 @SuppressWarnings("unchecked")
 public abstract class ConditionWrapper<T> implements Serializable {
 
-
-    /**
-     * 查询的列名
-     */
     private String[] selectColumns;
 
-    /**
-     * 表数据支持
-     */
     private TableSupport tableSupport;
 
-    /**
-     * 实体Class对象
-     */
     private Class<T> entityClass;
 
-    /**
-     * 当前条件构造是否只进行单表查询
-     */
     private Boolean primaryTable = false;
 
-    /**
-     * 最终的sql条件语句
-     */
     private StringBuilder finalConditional;
 
-    /**
-     * 上一次的拼接条件
-     */
+
     private String lastCondition;
 
-    /**
-     * sql中的所有参数值
-     */
+
     private List<Object> paramValues;
 
-    /**
-     * 排序
-     */
     private StringJoiner orderBy;
-    /**
-     * 分组
-     */
+
     private StringJoiner groupBy;
-    /**
-     * 筛选
-     */
+
     private StringBuilder having;
     private List<Object> havingParams;
 
-    /**
-     * 分页
-     */
     private Integer pageIndex;
     private Integer pageSize;
     private Boolean hasPageParams = false;
 
-    /**
-     * 函数式接口序列化解析对象
-     */
     private ColumnParseHandler<T> columnParseHandler;
 
-    /**
-     * 自定义sql条件，只会在条件构造器的条件拼接完成之后才会拼接该条件
-     */
     private StringBuilder customizeSql;
 
 
@@ -97,7 +60,7 @@ public abstract class ConditionWrapper<T> implements Serializable {
     }
 
     public ConditionWrapper<T> setEntityClass(Class<T> entityClass) {
-        Asserts.notNull(entityClass, "映射实体Class对象缺失");
+        Asserts.notNull(entityClass, "Missing mapping entity Class object");
         this.entityClass = entityClass;
         return this;
     }
@@ -191,14 +154,6 @@ public abstract class ConditionWrapper<T> implements Serializable {
         this.customizeSql.append(Constants.WHITESPACE).append(customizeSql);
     }
 
-
-    /**
-     * 参数注入后的sql条件
-     * <p>
-     * 原sql(a.name = ?, params = 20)
-     * </p>
-     * 返回sql(a.name = 20)
-     */
     public String injectParamsConditional() {
         StringBuilder handleSqlBuilder = new StringBuilder(this.finalConditional);
 
@@ -218,9 +173,6 @@ public abstract class ConditionWrapper<T> implements Serializable {
         return handleExecuteSql(handleSqlBuilder.toString(), this.paramValues.toArray());
     }
 
-    /**
-     * 可执行的sql条件
-     */
     public static String handleExecuteSql(String sql, Object[] params) {
         int symbolCount = StrUtils.countStr(sql, Constants.QUEST);
         int index = 0;
@@ -256,9 +208,6 @@ public abstract class ConditionWrapper<T> implements Serializable {
         wrapperInitialize(entityClass, null);
     }
 
-    /**
-     * 结构初始化
-     */
     protected void dataStructureInit() {
         this.finalConditional = new StringBuilder();
         this.lastCondition = Constants.EMPTY;
@@ -275,17 +224,11 @@ public abstract class ConditionWrapper<T> implements Serializable {
         this.hasPageParams = true;
     }
 
-    /**
-     * 解析函数后，得到java属性字段对应的表字段名称
-     */
     @SafeVarargs
     protected final String[] parseColumn(SFunction<T, ?>... func) {
         return columnParseHandler.parseToColumns(Arrays.asList(func)).toArray(new String[0]);
     }
 
-    /**
-     * 解析函数后，得到java属性字段对应的表字段名称
-     */
     protected String parseColumn(SFunction<T, ?> func) {
         return columnParseHandler.parseToColumn(func);
     }
@@ -316,9 +259,6 @@ public abstract class ConditionWrapper<T> implements Serializable {
         this.tableSupport = tableSupport;
     }
 
-    /**
-     * 合并查询列(数组合并)
-     */
     protected void mergeSelect(String[] selectColumns) {
         if(Objects.isNull(selectColumns)) {
             return;

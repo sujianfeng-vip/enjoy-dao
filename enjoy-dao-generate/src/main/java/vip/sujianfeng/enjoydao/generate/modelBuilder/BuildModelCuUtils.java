@@ -6,17 +6,17 @@ import vip.sujianfeng.utils.comm.StringBuilderEx;
 import java.util.List;
 
 /**
- * @Author SuJianFeng
- * @Date 2022/9/2
- * @Description
+ * author SuJianFeng
+ * createTime 2022/9/2
+ * description
  **/
 public class BuildModelCuUtils {
 
     public static void buildCu(StringBuilderEx code, String className, List<MySqlTableColumn> columns) {
         code.appendRow("")
                 .appendRow("/**")
-                .appendRow(" * @Author GenerateModelBuilder")
-                .appendRow(" * @Description Sql条件生成器")
+                .appendRow(" * author GenerateModelBuilder")
+                .appendRow(" * description Sql条件生成器")
                 .appendRow(" **/")
                 .appendFR("class %sCU: SqlConditionBuilder<%sCU>() {", className, className);
         for (MySqlTableColumn column : columns) {

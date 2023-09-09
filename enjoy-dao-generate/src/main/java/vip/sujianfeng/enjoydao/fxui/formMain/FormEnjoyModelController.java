@@ -23,8 +23,8 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * 模型生成
- * @author SuJianFeng
- * @date 2019/9/6 14:06
+ * author SuJianFeng
+ * createTime 2019/9/6 14:06
  **/
 @FxForm(value = "/fxml/formMain/formEnjoyModel.fxml", title = "Enjoy代码生成工具")
 public class FormEnjoyModelController extends FxBaseController {
@@ -48,7 +48,7 @@ public class FormEnjoyModelController extends FxBaseController {
             try {
 
                 String projectRoot = AppUtils.getCurrProjectRoot();
-                addLog("项目根目录：{}", projectRoot);
+                addLog("项目根目录:{}", projectRoot);
                 CommEvent<String> log = txt -> {
                     Platform.runLater(()->{
                         addLog(txt);

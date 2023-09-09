@@ -1,9 +1,9 @@
 package vip.sujianfeng.enjoydao.model;
 
 /**
- * @Author SuJianFeng
- * @Date 2022/10/25
- * @Description
+ * author SuJianFeng
+ * createTime 2022/10/25
+ * description
  **/
 public class OneValue {
     private String id;

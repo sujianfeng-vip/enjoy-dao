@@ -4,9 +4,9 @@ package vip.sujianfeng.enjoydao.sqlcondition;
 import java.util.Map;
 
 /**
- * @Author SuJianFeng
- * @Date 2022/9/14
- * @Description
+ * author SuJianFeng
+ * createTime 2022/9/14
+ * description
  **/
 public interface ISqlConditionBuilder extends ISqlNameSeatBuilder {
     String newKey();

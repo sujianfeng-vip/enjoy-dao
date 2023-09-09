@@ -6,17 +6,17 @@ import vip.sujianfeng.enjoydao.annotations.TbFieldLong;
 import vip.sujianfeng.enjoydao.annotations.TbKeyField;
 
 /**
- * @author SuJianFeng
- * @date 2022/04/30 9:40
+ * author SuJianFeng
+ * createTime 2022/04/30 9:40
  **/
 public class AbstractMasterModel extends AbstractOpModel{
 
-    @ApiModelProperty("主键id")
+    @ApiModelProperty("keyId")
     @TbKeyField
     private String id;
 
-    @ApiModelProperty("数据状态：0-正常，1-删除，2-注销")
-    @TbFieldInt(tableField = "state", label = "数据状态：0-正常，1-删除，2-注销", isSystemField = true)
+    @ApiModelProperty("Data status: 0-normal, 1-deleted, 2-logged out")
+    @TbFieldInt(tableField = "state", label = "Data status: 0-normal, 1-deleted, 2-logged out", isSystemField = true)
     private Integer state;
 
     @Override

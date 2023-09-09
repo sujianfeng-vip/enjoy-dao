@@ -1,9 +1,9 @@
 package vip.sujianfeng.enjoydao.handler.model;
 
 /**
- * @Author SuJianFeng
- * @Date 2022/9/21
- * @Description
+ * author SuJianFeng
+ * createTime 2022/9/21
+ * description
  **/
 public class OneIdParam {
     private String id;

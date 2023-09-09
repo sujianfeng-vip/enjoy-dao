@@ -6,9 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @Author SuJianFeng
- * @Date 2019/1/30 11:45
- * 数据库表定义
+ * author SuJianFeng
+ * createTime 2019/1/30 11:45
  **/
 public class TbTableBaseSql {
 
@@ -24,22 +23,12 @@ public class TbTableBaseSql {
         this.keyField = keyField;
     }
 
-    /**
-     * 所有实字段
-     */
     private List<TbDefineField> fieldList = new ArrayList<>();
-    /**
-     * 关联字段集合
-     */
+
     private List<TbDefineRelationField> rlsFieldList = new ArrayList<>();
-    /**
-     * 表达式字段
-     */
+
     private List<TbDefineExpressionField> exprFieldList = new ArrayList<>();
 
-    /**
-     * 参与更新（update或insert）字段（不包含：系统字段）
-     */
     private List<TbDefineField> allUpdateFields = new ArrayList<>();
 
     public String getTableName() {

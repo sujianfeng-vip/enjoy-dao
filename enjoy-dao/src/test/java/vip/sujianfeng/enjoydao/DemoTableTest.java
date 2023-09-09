@@ -7,9 +7,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @Author SuJianFeng
- * @Date 2022/6/21
- * @Description
+ * author SuJianFeng
+ * createTime 2022/6/21
+ * description
  **/
 public class DemoTableTest {
 

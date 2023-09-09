@@ -6,55 +6,49 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * @Author Xiao-Bai
- * @Date 2022/4/8 15:02
- * @Desc：
+ * author Xiao-Bai
+ * createTime 2022/4/8 15:02
  **/
 public class RexUtil {
 
     /**
-     * 匹配单引号
+     * Match single quotation marks
      */
     public final static String single_quotes = "(?<=').*?(?=')";
     
     /**
-     * 匹配反单引号
+     * Match anti single quotation marks
      */
     public final static String back_quotes = "(?<=`).*?(?=`)";
 
     /**
-     * 匹配双引号
+     * Match double quotes
      */
     public final static String double_quotes = "(?<=\").*?(?=\")";
 
     /**
-     * 匹配mybatis参数格式
+     * Match mybatis parameter format
      */
     public final static String sql_set_param = "\\#\\{(.+?)\\}";
     public final static String sql_rep_param = "\\$\\{(.+?)\\}";
 
     /**
-     * 匹配sql-ifnull函数
+     * Match SQL ifnull function
      */
     public final static String sql_if_null = "ifnull(.+?)$";
 
     /**
-     * 匹配自定义格式化设定
-     * this is {name} -> this is zhangsan
+     * Match custom formatting settings
      */
     public final static String custom_format = "\\{(.+?)\\}";
 
     /**
-     * 匹配是否是数字，小数，负数
+     * Is the match a number, decimal, or negative number
      */
     public final static String check_number = "-?[0-9]+.?[0-9]*";
 
 
-
-
-    /**
-     * 返回第一个满足正则条件的字符串
-     */
+    //Returns the first string that meets the regular condition
     public static String regexStr(String str, String regex) {
         Pattern pattern= Pattern.compile(regex);
         Matcher matcher=pattern.matcher(str);
@@ -64,10 +58,8 @@ public class RexUtil {
         return null;
     }
 
-    /**
-     * 替换匹配正则的字符串(只替换首次出现的)
-     * 例: this is {name} -> this is {zhangsan}
-     */
+    //Replace strings that match the regular (only replace the first occurrence)
+    //this is {name} -> this is {zhangsan}
     public static String replaceStr(String str, String regex, String replaceStr) {
         Pattern pattern= Pattern.compile(regex);
         Matcher matcher=pattern.matcher(str);
@@ -77,10 +69,8 @@ public class RexUtil {
         return str;
     }
 
-    /**
-     * 替换匹配正则的字符串(全部替换)
-     * 例: this is {name} -> this is zhangsan
-     */
+    //Replace string that matches regular (replace all)
+    //this is {name} -> this is zhangsan
     public static String replaceStr(String str, String regex, String oldStr, String replaceStr) {
         Pattern pattern= Pattern.compile(regex);
         Matcher matcher=pattern.matcher(str);
@@ -94,10 +84,8 @@ public class RexUtil {
         return str;
     }
 
-    /**
-     * 替换匹配正则的字符串(替换首次出现的字符)
-     * 例: this is {name} and {name} years -> this is {zahngsan} and {zahngsan}
-     */
+    //Replace string that matches regular (replace first occurrence character)
+    //this is {name} and {name} years -> this is {zahngsan} and {zahngsan}
     public static String replaceAllRex(String str, String regex, String replaceStr) {
         Pattern pattern= Pattern.compile(regex);
         Matcher matcher=pattern.matcher(str);
@@ -107,10 +95,9 @@ public class RexUtil {
         return str;
     }
 
-    /**
-     * 替换匹配正则的字符串(替换全部符合条件的)
-     * this is {name} and {age} years -> this is zahngsan and 18
-     */
+
+    //Replace strings that match the regular (replace all that match the criteria)
+    //this is {name} and {age} years -> this is zahngsan and 18
     public static String replaceAllRex(String str, String regex, String oldStr, String replaceStr) {
         Pattern pattern= Pattern.compile(regex);
         Matcher matcher=pattern.matcher(str);
@@ -125,9 +112,7 @@ public class RexUtil {
         return sb.toString();
     }
 
-    /**
-     * 是否匹配
-     */
+    // Match or not
     public static boolean hasRegex(String str, String regex) {
         Pattern pattern= Pattern.compile(regex);
         return pattern.matcher(str).find();

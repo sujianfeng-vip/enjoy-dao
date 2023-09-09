@@ -13,9 +13,9 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 /**
- * @Author SuJianFeng
- * @Date 2022/9/22
- * @Description
+ * author SuJianFeng
+ * createTime 2022/9/22
+ * description
  **/
 public class TreeBuilder {
 

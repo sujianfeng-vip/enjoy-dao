@@ -15,20 +15,12 @@ import java.util.Map;
 import java.util.Optional;
 
 /**
- * 多表关联字段数据处理
- * @Author SuJianFeng
- * @Date 2022/10/25
- * @Description
+ * author SuJianFeng
+ * createTime 2022/10/25
+ * description
  **/
 public class TbMultiRelationUtils {
 
-    /**
-     * 批量查询扩展字段数据
-     * @param jdbcTbDao
-     * @param t
-     * @param rows
-     * @param <T>
-     */
     public static <T> void batchSetRelationFieldValue(JdbcTbDao jdbcTbDao, Class<T> t, List<T> rows) throws Exception {
         if (rows.size() == 0) {
             return;

@@ -6,10 +6,8 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 /**
- * @Author Xiao-Bai
- * @Date 2022/2/16 14:01
- * @Desc：顶级条件构造器
- * column: 表字段
+ * author Xiao-Bai
+ * createTime 2022/2/16 14:01
  **/
 @SuppressWarnings("all")
 public interface Wrapper<Param, Result>  {

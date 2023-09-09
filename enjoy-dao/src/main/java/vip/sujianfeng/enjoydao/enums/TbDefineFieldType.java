@@ -1,8 +1,8 @@
 package vip.sujianfeng.enjoydao.enums;
 
 /**
- * @Author SuJianFeng
- * @Date 2019/1/30 11:14
+ * author SuJianFeng
+ * createTime 2019/1/30 11:14
  **/
 public enum TbDefineFieldType {
     ftString, ftInt, ftLongInt, ftDate, ftTimestamp, ftBoolean, ftMoney, ftText, ftLongtext, ftJson, ftJsonb;

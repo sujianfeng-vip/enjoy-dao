@@ -1,9 +1,9 @@
 package vip.sujianfeng.enjoydao.sqlcondition;
 
 /**
- * @Author SuJianFeng
- * @Date 2022/9/8
- * @Description
+ * author SuJianFeng
+ * createTime 2022/9/8
+ * description
  **/
 public enum SqlFieldSortType {
     Asc, Desc

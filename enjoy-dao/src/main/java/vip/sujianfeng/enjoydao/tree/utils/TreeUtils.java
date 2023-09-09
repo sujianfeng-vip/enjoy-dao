@@ -9,19 +9,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @Author SuJianFeng
- * @Date 2022/10/11
- * @Description
+ * author SuJianFeng
+ * createTime 2022/10/11
  **/
 public class TreeUtils {
 
-    /**
-     * 找指定节点
-     * @param tree
-     * @param value
-     * @param <T>
-     * @return
-     */
     public static <T extends TreeData> TreeNode<T> getTreeNodeByValue(List<TreeNode<T>> tree, String value) {
         if (tree == null) {
             return null;
@@ -38,13 +30,6 @@ public class TreeUtils {
         return null;
     }
 
-    /**
-     * 找出所有子节点
-     * @param tree
-     * @param parentId
-     * @param <T>
-     * @return
-     */
     public static <T extends TreeData> void getChildren(List<TreeNode<T>> tree, List<TreeNode<T>> toList, String parentId, boolean clone) {
         if (tree == null) {
             return;
@@ -57,13 +42,7 @@ public class TreeUtils {
         }
     }
 
-    /**
-     * 树转列表
-     * @param fromTree
-     * @param toList
-     * @param filter
-     * @param <T>
-     */
+
     public static <T extends TreeData> void tree2List(List<TreeNode<T>> fromTree, List<TreeNode<T>> fromList, List<TreeNode<T>> toList, TreeNodeFilter<T> filter, boolean clone) {
         for (TreeNode<T> currNode : fromList) {
             if (filter.match(fromTree, currNode)) {
@@ -75,35 +54,23 @@ public class TreeUtils {
         }
     }
 
-    /**
-     * 列表转树
-     * @param fromList
-     * @param <T>
-     * @return
-     */
     public static <T extends TreeData> void list2tree(List<TreeNode<T>> fromList, List<TreeNode<T>> toTree) {
         for (TreeNode<T> currNode : fromList) {
             if (TreeUtils.getTreeNodeByValue(toTree, currNode.getValue()) != null) {
-                //目的树已存在
                 continue;
             }
             TreeNode<T> parentNode = TreeUtils.getTreeNodeByValue(fromList, currNode.getParentId());
             if (parentNode != null) {
-                //存在父节点
                 if (parentNode.getChildren() == null ) {
                     parentNode.setChildren(new ArrayList<>());
                 }
                 parentNode.getChildren().add(currNode);
                 continue;
             }
-            //根节点
             toTree.add(currNode);
         }
     }
-    /**
-     * 判断value是否在treeNode里面
-     * @return
-     */
+
     public static <T extends TreeData> boolean isInTree(TreeNode<T> treeNode, String value) {
         if (StringUtilsEx.sameText(treeNode.getValue(), value)) {
             return true;

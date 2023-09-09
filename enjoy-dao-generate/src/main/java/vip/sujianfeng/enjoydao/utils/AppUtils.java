@@ -6,16 +6,16 @@ import vip.sujianfeng.utils.comm.ConvertUtils;
 import vip.sujianfeng.utils.comm.StringUtilsEx;
 
 /**
- * @Author SuJianFeng
- * @Date 2022/9/27
- * @Description
+ * author SuJianFeng
+ * createTime 2022/9/27
+ * description
  **/
 public class AppUtils {
 
     public static String getCurrProjectRoot() {
         String projectRoot = ConvertUtils.cStr(System.getProperties().getProperty("user.dir"));
         projectRoot = leftStr(projectRoot, "/output", "\\output", "/tools", "\\tools");
-        logger.info("项目根目录：{}", projectRoot);
+        logger.info("项目根目录:{}", projectRoot);
         return projectRoot;
     }
 

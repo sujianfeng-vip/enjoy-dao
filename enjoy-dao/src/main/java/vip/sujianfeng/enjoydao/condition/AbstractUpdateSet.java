@@ -1,23 +1,14 @@
 package vip.sujianfeng.enjoydao.condition;
 
 /**
- * @Author Xiao-Bai
- * @Date 2022/8/6 23:43
- * @Desc
+ * author Xiao-Bai
+ * createTime 2022/8/6 23:43
  */
 public abstract class AbstractUpdateSet<T> {
 
-    /**
-     * sql set 设置器
-     */
     private UpdateSetWrapper<T> updateSetWrapper;
-    /**
-     * sql 条件构造器
-     */
+
     private ConditionWrapper<T> conditionWrapper;
-    /**
-     * 实体class对象
-     */
     private final Class<T> entityClass;
 
 

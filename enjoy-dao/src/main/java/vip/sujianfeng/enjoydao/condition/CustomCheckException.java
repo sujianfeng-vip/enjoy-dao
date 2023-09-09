@@ -1,9 +1,9 @@
 package vip.sujianfeng.enjoydao.condition;
 
 /**
- * @Author Xiao-Bai
- * @Date 2021/7/8
- * @Description
+ * author Xiao-Bai
+ * createTime 2021/7/8
+ * description
  */
 public class CustomCheckException extends RuntimeException {
 

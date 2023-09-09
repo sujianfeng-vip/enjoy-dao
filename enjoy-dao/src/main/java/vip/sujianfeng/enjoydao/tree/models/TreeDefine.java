@@ -4,9 +4,9 @@ import vip.sujianfeng.enjoydao.tree.intf.BuildTree;
 
 
 /**
- * @Author SuJianFeng
- * @Date 2022/9/22
- * @Description
+ * author SuJianFeng
+ * createTime 2022/9/22
+ * description
  **/
 public class TreeDefine {
     private String key;

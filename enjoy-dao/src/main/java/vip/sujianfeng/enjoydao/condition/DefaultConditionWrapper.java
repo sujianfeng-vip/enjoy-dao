@@ -12,9 +12,8 @@ import java.util.function.Consumer;
 import java.util.stream.Collectors;
 
 /**
- * @Author Xiao-Bai
- * @Date 2022/2/16 14:11
- * @Desc：默认条件构造实例对象
+ * author Xiao-Bai
+ * createTime 2022/2/16 14:11
  **/
 public class DefaultConditionWrapper<T> extends ConditionAssembly<T, String, DefaultConditionWrapper<T>>
         implements Wrapper<String, DefaultConditionWrapper<T>> {
@@ -230,10 +229,6 @@ public class DefaultConditionWrapper<T> extends ConditionAssembly<T, String, Def
         return mergeConsmerCondition(condition, true, consumer);
     }
 
-    /**
-     * 若是查询单表（查询的实体中(包括父类)没有@DbRelated,@DbJoinTables之类的关联注解），则column为表字段，例如：name,age
-     * 若是查询关联表字段，则需附带关联表别名，例如：tp.name,tp.age
-     */
     @Override
     public DefaultConditionWrapper<T> select(String... columns) {
         setSelectColumns(columns);
@@ -283,9 +278,6 @@ public class DefaultConditionWrapper<T> extends ConditionAssembly<T, String, Def
         throw new UnsupportedOperationException();
     }
 
-    /**
-     * 转成lambda格式的构造器
-     */
     public LambdaConditionWrapper<T> toLambda() {
         return new LambdaConditionWrapper<>(this);
     }

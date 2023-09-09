@@ -9,8 +9,8 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * @Author SuJianFeng
- * @Date 2019/1/30 11:45
+ * author SuJianFeng
+ * createTime 2019/1/30 11:45
  **/
 public class TbUpdateSql extends TbTableSql {
 
@@ -26,11 +26,6 @@ public class TbUpdateSql extends TbTableSql {
 
     private List<String> updateFields;
 
-
-    /**
-     * 取得指定参与update的这部分自动
-     * @return
-     */
     public List<TbDefineField> getUpdateFields(){
         boolean all = updateFields == null || updateFields.size() == 0;
         if (all){

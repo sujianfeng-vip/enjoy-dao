@@ -20,9 +20,9 @@ import java.util.List;
 
 /**
  * 代码案例
- * @Author SuJianFeng
- * @Date 2022/9/26
- * @Description
+ * author SuJianFeng
+ * createTime 2022/9/26
+ * description
  **/
 @FxForm(value = "/fxml/formMain/formEnjoyCodeBuilder.fxml", title = "前后端代码生成")
 public class FormEnjoyCodeBuilderController extends FxBaseController {

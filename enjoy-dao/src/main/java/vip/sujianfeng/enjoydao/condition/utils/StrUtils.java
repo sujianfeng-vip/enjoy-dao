@@ -6,9 +6,8 @@ import java.util.Locale;
 import java.util.UUID;
 
 /**
- * @author Xiao-Bai
- * @date 2022/9/2 0:44
- * @desc
+ * author Xiao-Bai
+ * createTime 2022/9/2 0:44
  */
 public class StrUtils {
 
@@ -22,16 +21,11 @@ public class StrUtils {
         }
     }
 
-    /**
-     * 返回一串唯一的无序字符
-     */
     public static String getUUID(){
         return UUID.randomUUID().toString().replace("-","").toLowerCase(Locale.CHINA);
     }
 
-    /**
-     * 字符串倒转
-     */
+
     public static String reverse(String str) {
         Asserts.notEmpty(str);
         char[] chars = str.toCharArray();
@@ -44,11 +38,6 @@ public class StrUtils {
         return new String(chars);
     }
 
-    /**
-     * 获取表名首字母拼接
-     * [65 - 90] 为大写
-     * [97 - 122] 为小写
-     */
     public static String firstTableName(String tableName) {
 
         char first = tableName.charAt(0);
@@ -84,9 +73,6 @@ public class StrUtils {
         return new String(upCosNums);
     }
 
-    /**
-     * 该字符串是否全部为数字
-     */
     public static boolean isAllNumber(String str) {
         for (char c : str.toCharArray()) {
             if (!Character.isDigit(c)) {
@@ -96,9 +82,6 @@ public class StrUtils {
         return true;
     }
 
-    /**
-     * 该字符串是否包含数字
-     */
     public static boolean isExistNumber(String str) {
         for (char c : str.toCharArray()) {
             if (Character.isDigit(c)) {
@@ -108,9 +91,6 @@ public class StrUtils {
         return false;
     }
 
-    /**
-     * 该字符串是否存在大写字母
-     */
     public static boolean isExistMaxLetter(String str) {
         for (char c : str.toCharArray()) {
             if (Character.isUpperCase(c)) {
@@ -120,9 +100,6 @@ public class StrUtils {
         return false;
     }
 
-    /**
-     * 字符串是否全是大写
-     */
     public static boolean isAllMaxLetter(String str) {
         for (char c : str.toCharArray()) {
             if (!Character.isUpperCase(c)) {
@@ -132,9 +109,6 @@ public class StrUtils {
         return true;
     }
 
-    /**
-     * 该字符串是否存在小写字母
-     */
     public static boolean isExistMinLetter(String str) {
         for (char c : str.toCharArray()) {
             if (Character.isLowerCase(c)) {
@@ -144,9 +118,6 @@ public class StrUtils {
         return false;
     }
 
-    /**
-     * 字符串是否全是小写
-     */
     public static boolean isAllMinLetter(String str) {
         for (char c : str.toCharArray()) {
             if (!Character.isLowerCase(c)) {
@@ -156,17 +127,10 @@ public class StrUtils {
         return true;
     }
 
-    /**
-     * 是否不为空
-     */
     public static boolean isNotBlank(final  CharSequence cs) {
         return !isBlank(cs);
     }
 
-
-    /**
-     * 类名转首字母小写
-     */
     public static String toIndexLower(String text) {
         String res = Constants.EMPTY;
         if (JudgeUtil.isEmpty(text)) {
@@ -176,9 +140,6 @@ public class StrUtils {
         return first + text.substring(1);
     }
 
-    /**
-     * 是否为空
-     */
     public static boolean isBlank(final CharSequence cs) {
         if (cs == null) {
             return true;
@@ -194,11 +155,6 @@ public class StrUtils {
         return true;
     }
 
-
-
-    /**
-     * 驼峰转下划线
-     */
     public static String camelToUnderline(String param) {
         if (isBlank(param)) {
             return "";
@@ -215,9 +171,6 @@ public class StrUtils {
         return sb.toString();
     }
 
-    /**
-     * 字符串下划线转驼峰
-     */
     public static String underlineToCamel(String param) {
         if (isBlank(param)) {
             return Constants.EMPTY;
@@ -237,9 +190,6 @@ public class StrUtils {
         return sb.toString();
     }
 
-    /**
-     * 查找字符串出现次数
-     */
     public static int countStr(String str, String rex) {
         int num = 0;
         while (str.contains(rex)) {
@@ -249,9 +199,7 @@ public class StrUtils {
         return num;
     }
 
-    /**
-     * 判断是否以指定字符串开头
-     */
+
     public static boolean startWith(CharSequence str, CharSequence prefix, boolean isIgnoreCase) {
         if (null != str && null != prefix) {
             return isIgnoreCase ? str.toString().toLowerCase().startsWith(prefix.toString().toLowerCase()) : str.toString().startsWith(prefix.toString());
@@ -260,17 +208,12 @@ public class StrUtils {
         }
     }
 
-    /**
-     * 判断是否以指定字符串开头(忽略大小写)
-     */
+
     public static boolean startWithIgnoreCase(CharSequence str, CharSequence prefix) {
         return startWith(str, prefix, true);
     }
 
 
-    /**
-     * 判断是否以指定字符串结尾
-     */
     public static boolean endWith(CharSequence str, CharSequence suffix, boolean isIgnoreCase) {
         if (null != str && null != suffix) {
             return isIgnoreCase ? str.toString().toLowerCase().endsWith(suffix.toString().toLowerCase()) : str.toString().endsWith(suffix.toString());
@@ -279,9 +222,6 @@ public class StrUtils {
         }
     }
 
-    /**
-     * 判断是否以指定字符串结尾(忽略大小写)
-     */
     public static boolean endWithIgnoreCase(CharSequence str, CharSequence suffix) {
         return endWith(str, suffix, true);
     }

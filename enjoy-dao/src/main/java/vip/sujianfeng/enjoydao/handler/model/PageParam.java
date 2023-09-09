@@ -8,19 +8,13 @@ import vip.sujianfeng.enjoydao.sqlcondition.ISqlConditionBuilder;
 import vip.sujianfeng.utils.comm.StringUtilsEx;
 
 /**
- * @Author SuJianFeng
- * @Date 2022/9/21
- * @Description
+ * author SuJianFeng
+ * createTime 2022/9/21
  **/
-@ApiModel(description = "查询分页数据")
 public abstract class PageParam {
-    @ApiModelProperty("页码")
     private int pageNo;
-    @ApiModelProperty("每页笔数")
     private int pageSize;
-    @ApiModelProperty("关键字")
     private String keyword;
-    @ApiModelProperty("排序字段")
     private String orderBy;
 
     public <T extends PageParam> T clone(Class<T> t) {

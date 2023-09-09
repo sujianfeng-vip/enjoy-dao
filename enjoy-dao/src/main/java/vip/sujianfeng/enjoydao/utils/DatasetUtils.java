@@ -10,27 +10,17 @@ import java.util.List;
 import java.util.Optional;
 
 /**
- * @Author SuJianFeng
- * @Date 2022/9/21
- * @Description 数据集工具类
+ * author SuJianFeng
+ * createTime 2022/9/21
  **/
 public class DatasetUtils {
 
-    /**
-     * 比较两个数据集，找出Delta数据
-     * @param oldRows
-     * @param newRows
-     * @param <T>
-     * @return
-     */
     public static <T extends AbstractOpModel> DeltaData<T> getDelta(List<T> oldRows, List<T> newRows) {
         DeltaData<T> result = new DeltaData<>();
         if (newRows == null) {
-            //不存在新增数据
             return result;
         }
         if (oldRows == null) {
-            //不存在旧数据，那么全部新增
             result.getNewRows().addAll(newRows);
             return result;
         }
@@ -52,12 +42,10 @@ public class DatasetUtils {
                     }
                 }
                 if (changed) {
-                    //修改
                     result.getUpdateRows().add(newRow);
                 }
                 continue;
             }
-            //新增
             result.getNewRows().add(newRow);
         }
         for (T oldRow : oldRows) {
@@ -70,23 +58,16 @@ public class DatasetUtils {
         return result;
     }
 
-    /**
-     * 将delta数据入库
-     * @param tbDao
-     * @param deltaData
-     * @param <T>
-     * @throws Exception
-     */
     public static <T extends AbstractOpModel> void updateDelta(TbDao tbDao, DeltaData<T> deltaData) throws Exception {
-        //新增
+
         for (T newRow : deltaData.getNewRows()) {
             tbDao.insert(newRow);
         }
-        //修改
+
         for (T updateRow : deltaData.getUpdateRows()) {
             tbDao.update(updateRow);
         }
-        //删除
+
         for (T deleteRow : deltaData.getDeleteRows()) {
             tbDao.delete(deleteRow);
         }

@@ -55,7 +55,7 @@ public class GenerateModelBuilder extends BaseCodeBuilder {
         }
         List<MySqlTable> tables = queryTables(getJdbcDao(), tableWhere.toString());
 
-        FormEnjoyModelController.ME.addLog("数据库[{}]表总数：{}", getJdbcDao().getDbName(), tables.size());
+        FormEnjoyModelController.ME.addLog("数据库[{}]表总数:{}", getJdbcDao().getDbName(), tables.size());
         for (MySqlTable it : tables) {
             String className = StringUtilsEx.firstWordUpCase(HumpNameUtils.underLineToHump(it.getTableNameForClass()));
             String basePath = getModelCodeFilePath(this.poPath, it.getTableName()) + "/" + className + "PO.kt";

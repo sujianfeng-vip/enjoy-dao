@@ -3,9 +3,9 @@ package vip.sujianfeng.enjoydao.tree.models;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /**
- * @Author SuJianFeng
- * @Date 2022/10/2 0002
- * @Description
+ * author SuJianFeng
+ * createTime 2022/10/2 0002
+ * description
  **/
 public class TreeData {
     @JsonIgnore

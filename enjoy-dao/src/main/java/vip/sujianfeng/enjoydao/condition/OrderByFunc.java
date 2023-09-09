@@ -5,9 +5,8 @@ import vip.sujianfeng.enjoydao.condition.enums.SqlOrderBy;
 import vip.sujianfeng.enjoydao.condition.utils.lambda.SFunction;
 
 /**
- * @Author Xiao-Bai
- * @Date 2022/3/19 17:27
- * @Desc：排序函数式接口方法
+ * author Xiao-Bai
+ * createTime 2022/3/19 17:27
  **/
 public class OrderByFunc<T> extends AbstractSqlFunc<T, OrderByFunc<T>> {
 

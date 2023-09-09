@@ -3,9 +3,8 @@ package vip.sujianfeng.enjoydao.condition.enums;
 import vip.sujianfeng.enjoydao.condition.consts.Constants;
 
 /**
- * @Author Xiao-Bai
- * @Date 2021/12/11 13:30
- * @Desc：sql的条件符号
+ * author Xiao-Bai
+ * createTime 2021/12/11 13:30
  **/
 public enum DbSymbol {
 

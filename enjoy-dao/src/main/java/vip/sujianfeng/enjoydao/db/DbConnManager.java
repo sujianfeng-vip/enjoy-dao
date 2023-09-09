@@ -6,9 +6,8 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
- * @Author SuJianFeng
- * @Date 2019/5/27 14:37
- * 数据库连接管理
+ * author SuJianFeng
+ * createTime 2019/5/27 14:37
  **/
 public class DbConnManager {
 
@@ -39,13 +38,6 @@ public class DbConnManager {
     }
 
 
-
-    /**
-     * 相同数据源不同tag将创建不同的连接
-     * @param dbConfig
-     * @param tag
-     * @return
-     */
     public static Connection getConn(DbConfig dbConfig, String tag) throws Exception {
         Connection result = getCacheConn(dbConfig, tag);
         if (result != null){
@@ -53,7 +45,7 @@ public class DbConnManager {
         }
         result = DbUtils.buildConn(dbConfig);
         setCacheConn(dbConfig, tag, result);
-        System.out.println(String.format("\n================================\n%s\n连接数：%s\n当前tag: %s\n================================\n",
+        System.out.println(String.format("\n================================\n%s\nconnect size:%s\ncurr tag: %s\n================================\n",
                 dbConfig.toKey(), CONN_MAP.get(dbConfig.toKey()).values().size(), tag));
         return result;
     }

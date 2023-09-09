@@ -13,8 +13,8 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * @author Xiao-Bai
- * @date 2022/12/6 0006 17:21
+ * author Xiao-Bai
+ * createTime 2022/12/6 0006 17:21
  */
 public class TableSimpleSupport<T> implements TableSupport {
 

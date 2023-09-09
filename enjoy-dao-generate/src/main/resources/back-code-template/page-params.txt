@@ -5,9 +5,9 @@ import vip.sujianfeng.utils.comm.StringUtilsEx
 import {{tableCU}}
 
 /**
- * @Author GenerateCodeBuilder
- * @Date {{dateTime}}
- * @Description {{AutoCreateCanModify}}
+ * author GenerateCodeBuilder
+ * createTime {{dateTime}}
+ * description {{AutoCreateCanModify}}
  **/
 class {{modelClassName}}PageParam: PageParam() {
 

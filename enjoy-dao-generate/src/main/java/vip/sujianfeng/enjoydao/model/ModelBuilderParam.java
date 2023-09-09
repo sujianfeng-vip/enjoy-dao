@@ -1,9 +1,9 @@
 package vip.sujianfeng.enjoydao.model;
 
 /**
- * @Author SuJianFeng
- * @Date 2022/9/23
- * @Description
+ * author SuJianFeng
+ * createTime 2022/9/23
+ * description
  **/
 public class ModelBuilderParam {
     private String modelBase;

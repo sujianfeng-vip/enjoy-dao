@@ -8,9 +8,8 @@ import vip.sujianfeng.enjoydao.condition.utils.lambda.SFunction;
 import java.util.Collection;
 
 /**
- * @Author Xiao-Bai
- * @Date 2022/3/3 17:17
- * @Desc：lambda表达式的条件构造对象
+ * author Xiao-Bai
+ * createTime 2022/3/3 17:17
  **/
 public class LambdaConditionWrapper<T> extends ConditionAdapter<T, LambdaConditionWrapper<T>>
         implements Wrapper<SFunction<T, ?>, LambdaConditionWrapper<T>> {
@@ -124,9 +123,6 @@ public class LambdaConditionWrapper<T> extends ConditionAdapter<T, LambdaConditi
         return adapter(DbSymbol.IS_NOT_NULL, condition, column);
     }
 
-    /**
-     * 转成默认格式的条件构造器
-     */
     public DefaultConditionWrapper<T> toDefault() {
         return new DefaultConditionWrapper<>(this);
     }

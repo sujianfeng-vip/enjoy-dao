@@ -9,19 +9,13 @@ import java.time.LocalDate;
 import java.util.*;
 
 /**
- * @Author Xiao-Bai
- * @Date 2021/1/12 0012 22:07
- * @Version 1.0
- * @Description CommUtils
+ * author Xiao-Bai
+ * createTime 2021/1/12 0012 22:07
  */
 
 @SuppressWarnings("unchecked")
 public class CustomUtil extends StrUtils {
 
-
-    /**
-    * 是否是系统自定义的基础类型
-    */
     public static boolean isBasicType(Object el) {
         return el instanceof CharSequence
                 || el.getClass().isPrimitive()
@@ -37,9 +31,6 @@ public class CustomUtil extends StrUtils {
                 || el instanceof Date;
     }
 
-    /**
-     * 是否是系统自定义的基础类型
-     */
     public static boolean isBasicClass(Class<?> cls) {
         return CharSequence.class.isAssignableFrom(cls)
                 || cls.isPrimitive()
@@ -57,16 +48,11 @@ public class CustomUtil extends StrUtils {
                 || Date.class.equals(cls);
     }
 
-    /**
-     * 是否是java的原生对象
-     */
+
     public static boolean isJavaOriginObject(Class<?> cls) {
         return cls.getPackage().getName().startsWith(Constants.JAVA_DOT);
     }
 
-    /**
-     * 可执行的sql条件
-     */
     public static String handleExecuteSql(String sql, Object[] params) {
         int symbolCount = countStr(sql, Constants.QUEST);
         int index = 0;

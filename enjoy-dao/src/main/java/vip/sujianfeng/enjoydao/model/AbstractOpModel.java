@@ -14,8 +14,8 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * @author SuJianFeng
- * @date 2019/8/9 9:06
+ * author SuJianFeng
+ * createTime 2019/8/9 9:06
  **/
 public abstract class AbstractOpModel implements Serializable {
     private static Logger logger = LoggerFactory.getLogger(AbstractOpModel.class);

@@ -9,9 +9,9 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * sql语句参数替换，将{xxx}替换为 ？，并返回参数数组
- * @author SuJianFeng
- * @date 2020/9/2 11:29
+ * SQL statement parameter replacement, replacing {xxx} with?, And return the parameter array
+ * author SuJianFeng
+ * createTime 2020/9/2 11:29
  **/
 public class SqlParamsParser {
     private String sql;
@@ -33,7 +33,7 @@ public class SqlParamsParser {
             right = StringUtilsEx.rightStrEx(this.sql, "}");
             Object value = getParamValue(key);
             if (value == null){
-                throw new Exception(String.format("不存在参数[%s]数据!", key));
+                throw new Exception(String.format("Parameter [%s] data does not exist!", key));
             }
             this.paramList.add(value);
             this.sql = String.format("%s?%s", left, right);
@@ -47,7 +47,7 @@ public class SqlParamsParser {
         }
         Field f = ReflectUtils.getDeclaredField(paramObj.getClass(), key);
         if (f == null){
-            throw new Exception(String.format("此类[%s]不存在属性: %s", paramObj.getClass().getName(), key));
+            throw new Exception(String.format("Property does not exist for this class [%s]:%s", paramObj.getClass().getName(), key));
         }
         f.setAccessible(true);
         return f.get(paramObj);

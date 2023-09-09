@@ -12,19 +12,13 @@ import vip.sujianfeng.utils.comm.StringBuilderEx;
 import java.util.*;
 
 /**
- * @author Xiao-Bai
- * @date 2022/12/6 0006 16:22
+ * author Xiao-Bai
+ * createTime 2022/12/6 0006 16:22
  */
 public class ThisQuery {
 
-    /**
-     * 查询的sql
-     */
     private final StringBuilder selectSql = new StringBuilder();
 
-    /**
-     * sql参数
-     */
     private final List<Object> params = new ArrayList<>();
 
     public String getSelectSql() {
@@ -37,7 +31,6 @@ public class ThisQuery {
 
     public ThisQuery(ConditionWrapper<?> wrapper, String joinSql) {
 
-        // 查询的字段
         StringJoiner selectColumnStr = new StringJoiner(", ");
         TableSupport tableSupport = wrapper.getTableSupport();
         TbTableSql tbTableSql = tableSupport.getTbTableSql();
@@ -61,7 +54,6 @@ public class ThisQuery {
             }
         }
 
-        // 拼接
         if (!onlyPrimary) {
             for (TbDefineRelationField relationField : tbTableSql.getRlsFieldList()) {
                 String column = fieldMap.get(relationField.getField());
@@ -69,7 +61,6 @@ public class ThisQuery {
             }
         }
 
-        // 拼接表连接
         this.selectSql.append(
                 String.format("SELECT %s \nFROM %s %s %s",
                         selectColumnStr, tableSupport.table(), tableSupport.alias(),
@@ -77,21 +68,15 @@ public class ThisQuery {
                 )
         );
 
-
-        // 拼接条件
         String conditional = wrapper.getFinalConditional();
         if (JudgeUtil.isNotEmpty(conditional)) {
             this.selectSql.append(String.format(" WHERE (%s) ", DbUtil.trimSqlCondition(conditional)));
         }
         params.addAll(wrapper.getParamValues());
 
-        // 收集剩余条件
         this.collectParams(wrapper);
     }
 
-    /**
-     * 收集所有参数
-     */
     private void collectParams(ConditionWrapper<?> wrapper) {
         // group by
         if (JudgeUtil.isNotEmpty(wrapper.getGroupBy())) {

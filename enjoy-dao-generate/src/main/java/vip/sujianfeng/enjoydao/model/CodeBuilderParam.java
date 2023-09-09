@@ -1,9 +1,9 @@
 package vip.sujianfeng.enjoydao.model;
 
 /**
- * @Author SuJianFeng
- * @Date 2023/6/21
- * @Description
+ * author SuJianFeng
+ * createTime 2023/6/21
+ * description
  **/
 public class CodeBuilderParam {
     private String frontPath;

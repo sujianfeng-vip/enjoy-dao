@@ -10,9 +10,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * @Author SuJianFeng
- * @Date 2023/6/21
- * @Description
+ * author SuJianFeng
+ * createTime 2023/6/21
+ * description
  **/
 public class BackPageParamBuilder extends BaseCodeBuilder {
     private ConfigParam config;

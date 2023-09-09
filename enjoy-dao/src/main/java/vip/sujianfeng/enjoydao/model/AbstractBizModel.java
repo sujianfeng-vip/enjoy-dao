@@ -6,17 +6,17 @@ import vip.sujianfeng.enjoydao.annotations.TbFieldLong;
 import vip.sujianfeng.enjoydao.annotations.TbKeyField;
 
 /**
- * @author SuJianFeng
- * @date 2022/04/30 9:40
+ * author SuJianFeng
+ * createTime 2022/04/30 9:40
  **/
 public class AbstractBizModel extends AbstractMasterModel{
 
-    @ApiModelProperty("创建时间（只读）")
-    @TbFieldLong(tableField = "create_time", label = "创建时间", isSystemField = true)
+    @ApiModelProperty("Creation time (read-only)")
+    @TbFieldLong(tableField = "create_time", label = "Creation time", isSystemField = true)
     private Integer createTime;
 
-    @ApiModelProperty("最后修改时间（只读）")
-    @TbFieldLong(tableField = "update_time", label = "最后修改时间", isSystemField = true)
+    @ApiModelProperty("Last modification time (read-only)")
+    @TbFieldLong(tableField = "update_time", label = "last-modified", isSystemField = true)
     private Integer updateTime;
 
     public Integer getCreateTime() {

@@ -11,9 +11,9 @@ import {{modelClassName}}PageParam
 import {{tableVO}}
 
 /**
- * @Author GenerateCodeBuilder
- * @Date {{dateTime}}
- * @Description {{AutoCreateCanModify}}
+ * author GenerateCodeBuilder
+ * createTime {{dateTime}}
+ * description {{AutoCreateCanModify}}
  **/
 @Api(tags = ["{{title}}"])
 @RestController

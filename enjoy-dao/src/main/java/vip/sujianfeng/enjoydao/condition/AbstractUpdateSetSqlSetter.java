@@ -9,17 +9,12 @@ import vip.sujianfeng.enjoydao.condition.utils.lambda.SFunction;
 import java.util.function.Consumer;
 
 /**
- * @Author Xiao-Bai
- * @Date 2022/6/27 0027 12:01
- * @Desc 修改操作的sqlSet实体
- * T - 实体类型
- * Children - 子类类型
+ * author Xiao-Bai
+ * createTime 2022/6/27 0027 12:01
  */
 public abstract class AbstractUpdateSetSqlSetter<T, Children> extends UpdateSetWrapper<T> {
 
-    /**
-     * 子类实例
-     */
+
     protected abstract Children getInstance();
     @SuppressWarnings("unchecked")
     protected final Children childrenClass = (Children) this;
@@ -46,9 +41,6 @@ public abstract class AbstractUpdateSetSqlSetter<T, Children> extends UpdateSetW
         super(entityClass);
     }
 
-    /**
-     * 添加自定义setSql
-     */
     protected Children addSetSqlString(boolean condition, String setSql, Object... params) {
         if (condition) {
             this.addSqlSetter(setSql);
@@ -63,9 +55,6 @@ public abstract class AbstractUpdateSetSqlSetter<T, Children> extends UpdateSetW
         return childrenClass;
     }
 
-    /**
-     * 消费型sql set
-     */
     @SuppressWarnings("unchecked")
     protected Children consumerSet(boolean condition, Consumer<Children> consumer) {
         if (condition) {

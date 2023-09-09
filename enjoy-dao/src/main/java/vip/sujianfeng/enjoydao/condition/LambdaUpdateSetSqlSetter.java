@@ -3,9 +3,8 @@ package vip.sujianfeng.enjoydao.condition;
 import vip.sujianfeng.enjoydao.condition.utils.lambda.SFunction;
 
 /**
- * @Author Xiao-Bai
- * @Date 2022/6/27 0027 11:59
- * @Desc lambda表达式的sql设置器
+ * author Xiao-Bai
+ * createTime 2022/6/27 0027 11:59
  */
 public class LambdaUpdateSetSqlSetter<T> extends AbstractUpdateSetSqlSetter<T, LambdaUpdateSetSqlSetter<T>>
         implements UpdateSqlSet<SFunction<T, ?>, LambdaUpdateSetSqlSetter<T>> {

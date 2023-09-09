@@ -7,8 +7,8 @@ import vip.sujianfeng.enjoydao.annotations.TbTableUuid;
 import vip.sujianfeng.enjoydao.interfaces.SqlAdapter;
 
 /**
- * @author SuJianFeng
- * @date 2019/9/20 8:54
+ * author SuJianFeng
+ * createTime 2019/9/20 8:54
  **/
 public class TbDefineTable {
 

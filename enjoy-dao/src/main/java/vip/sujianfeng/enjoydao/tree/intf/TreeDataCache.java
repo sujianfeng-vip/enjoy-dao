@@ -7,10 +7,8 @@ import vip.sujianfeng.enjoydao.tree.models.TreeNode;
 import java.util.List;
 
 /**
- * 树数据缓存处理接口
- * @Author SuJianFeng
- * @Date 2022/10/9
- * @Description
+ * author SuJianFeng
+ * createTime 2022/10/9
  **/
 public interface TreeDataCache {
     <T extends TreeData> List<TreeNode<T>> get(Class<T> dateType, TreeDefine treeDefine);

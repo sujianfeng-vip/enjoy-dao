@@ -10,8 +10,8 @@ import vip.sujianfeng.enjoydao.sqlbuilder.TbPageRows;
 import java.util.List;
 
 /**
- * @author Xiao-Bai
- * @date 2022/12/7 0007 9:11
+ * author Xiao-Bai
+ * createTime 2022/12/7 0007 9:11
  */
 public class ConditionTest {
 

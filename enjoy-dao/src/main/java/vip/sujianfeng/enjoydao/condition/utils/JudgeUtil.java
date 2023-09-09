@@ -8,10 +8,10 @@ import java.util.Map;
 import java.util.Objects;
 
 /**
- * @Author Xiao-Bai
- * @Date 2021/1/16 0016 1:44
- * @Version 1.0
- * @Description JudgeUtilsAx
+ * author Xiao-Bai
+ * createTime 2021/1/16 0016 1:44
+ * version 1.0
+ * description JudgeUtilsAx
  */
 public class JudgeUtil {
 

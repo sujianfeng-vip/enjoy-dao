@@ -1,9 +1,8 @@
 package vip.sujianfeng.enjoydao.condition;
 
 /**
- * @Author Xiao-Bai
- * @Date 2022/6/27 0027 11:59
- * @Desc 默认的sql设置器
+ * author Xiao-Bai
+ * createTime 2022/6/27 0027 11:59
  */
 public class DefaultUpdateSetSqlSetter<T> extends AbstractUpdateSetSqlSetter<T, DefaultUpdateSetSqlSetter<T>>
         implements UpdateSqlSet<String, DefaultUpdateSetSqlSetter<T>> {

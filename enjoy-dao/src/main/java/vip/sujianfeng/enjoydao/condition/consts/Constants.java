@@ -1,9 +1,8 @@
 package vip.sujianfeng.enjoydao.condition.consts;
 
 /**
- * @Author Xiao-Bai
- * @Date 2021/10/6 17:37
- * @Desc：简短符号常量类
+ * author Xiao-Bai
+ * createTime 2021/10/6 17:37
  **/
 public class Constants {
 
@@ -20,15 +19,10 @@ public class Constants {
     public final static String GETTER = "get";
     public final static String SETTER = "set";
 
-    /**
-     * true or false
-     */
+
     public final static String CONST_TRUE = "true";
     public final static String CONST_FALSE = "false";
 
-    /**
-     * sql常量
-     */
     public final static String SET = " SET ";
     public final static String IS = "is";
     public final static String IN = " in ";
@@ -56,9 +50,6 @@ public class Constants {
     public final static String QUEST = "?";
     public final static String PERCENT = "%";
 
-    /**
-     * java关键字
-     */
     public final static String FILE = "file";
     public final static String JAR = "jar";
     public final static String JAVA_DOT = "java.";
@@ -70,9 +61,7 @@ public class Constants {
     public final static String IMPORT = "import ";
     public final static String PRIVATE = "private";
 
-    /**
-     * global key
-     */
+
     public final static String DATA_CONFIG = "DATA_CONFIG";
     public final static String TRANS_CURSOR = "TRANS_CURSOR";
     public final static String DATA_BASE = "DATABASE";

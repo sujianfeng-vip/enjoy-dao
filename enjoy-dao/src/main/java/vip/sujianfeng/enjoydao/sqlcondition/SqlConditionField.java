@@ -7,9 +7,9 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * @Author SuJianFeng
- * @Date 2022/9/2
- * @Description
+ * author SuJianFeng
+ * createTime 2022/9/2
+ * description
  **/
 public class SqlConditionField<T extends SqlConditionBuilder<?>> {
     private T builder;

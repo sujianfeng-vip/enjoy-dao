@@ -8,9 +8,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * @Author SuJianFeng
- * @Date 2022/9/2
- * @Description 条件生成器
+ * author SuJianFeng
+ * createTime 2022/9/2
  **/
 public class SqlConditionBuilder<T extends SqlConditionBuilder<?>> implements ISqlConditionBuilder {
     private T me;

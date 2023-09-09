@@ -26,8 +26,8 @@ import vip.sujianfeng.utils.comm.YmlUtils;
 import java.io.IOException;
 
 /**
- * @author SuJianFeng
- * @date 2019/8/26 8:04
+ * author SuJianFeng
+ * createTime 2019/8/26 8:04
  **/
 public class MainApp extends Application {
 
@@ -72,7 +72,7 @@ public class MainApp extends Application {
             AppUtils.getCurrProjectRoot();
 
             String ymlFile = ARGS.length > 0 ? ARGS[0] : "./enjoy-dao-ui.yml";
-            logger.info("加载配置文件：{}", ymlFile);
+            logger.info("加载配置文件:{}", ymlFile);
             CONFIG = YmlUtils.loadYml(ConfigParam.class, ymlFile);
 
             if (CONFIG == null) {

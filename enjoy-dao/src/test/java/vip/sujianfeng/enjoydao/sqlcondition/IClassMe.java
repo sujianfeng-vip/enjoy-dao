@@ -1,9 +1,9 @@
 package vip.sujianfeng.enjoydao.sqlcondition;
 
 /**
- * @Author SuJianFeng
- * @Date 2022/9/2
- * @Description
+ * author SuJianFeng
+ * createTime 2022/9/2
+ * description
  **/
 public interface IClassMe {
     <T> T me();

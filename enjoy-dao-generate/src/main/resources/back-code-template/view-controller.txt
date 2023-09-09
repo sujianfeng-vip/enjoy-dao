@@ -12,9 +12,9 @@ import {{rootPackage}}.base.controller.BaseController
 import {{tableVO}}
 
 /**
- * @Author GenerateCodeBuilder
- * @Date {{dateTime}}
- * @Description {{AutoCreateCanModify}}
+ * author GenerateCodeBuilder
+ * createTime {{dateTime}}
+ * description {{AutoCreateCanModify}}
  **/
 @Api(tags = ["{{ViewTitle}}"])
 @Controller

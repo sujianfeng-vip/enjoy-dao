@@ -9,9 +9,9 @@ import vip.sujianfeng.utils.intf.CommEvent;
 import java.io.IOException;
 
 /**
- * @Author SuJianFeng
- * @Date 2023/6/21
- * @Description
+ * author SuJianFeng
+ * createTime 2023/6/21
+ * description
  **/
 public class GenerateCodeBuilder extends BaseCodeBuilder {
     public boolean coverIfExist;

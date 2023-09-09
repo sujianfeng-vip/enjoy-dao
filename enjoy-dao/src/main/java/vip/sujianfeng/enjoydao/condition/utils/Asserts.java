@@ -1,9 +1,8 @@
 package vip.sujianfeng.enjoydao.condition.utils;
 
 /**
- * @Author Xiao-Bai
- * @Date 2022/7/21 23:58
- * @Desc 断言工具类
+ * author Xiao-Bai
+ * createTime 2022/7/21 23:58
  */
 public final class Asserts {
 

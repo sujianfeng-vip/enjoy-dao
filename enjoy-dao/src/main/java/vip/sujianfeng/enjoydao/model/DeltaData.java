@@ -4,9 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @Author SuJianFeng
- * @Date 2022/9/21
- * @Description 新旧数据差异
+ * author SuJianFeng
+ * createTime 2022/9/21
  **/
 public class DeltaData<T extends AbstractOpModel> {
 

@@ -8,8 +8,8 @@ import java.sql.*;
 import java.util.*;
 
 /**
- * @Author SuJianFeng
- * @Date 2019/5/14 10:55
+ * author SuJianFeng
+ * createTime 2019/5/14 10:55
  **/
 public class DbUtils {
 
@@ -177,10 +177,6 @@ public class DbUtils {
         Object changeValue(String field, Object value);
     }
 
-    /**
-     * 开始事务
-     * @param conn
-     */
     public static void beginTransaction(Connection conn){
         if(conn != null){
             try {
@@ -193,10 +189,6 @@ public class DbUtils {
         }
     }
 
-    /**
-     * 提交事务
-     * @param conn
-     */
     public static void commitTransaction(Connection conn){
         if(conn != null){
             try {
@@ -210,10 +202,6 @@ public class DbUtils {
         }
     }
 
-    /**
-     * 回滚事务
-     * @param conn
-     */
     public static void rollBackTransaction(Connection conn){
         if(conn != null){
             try {

@@ -9,9 +9,9 @@ import vip.sujianfeng.utils.comm.FileHelper;
 import vip.sujianfeng.utils.comm.StringBuilderEx;
 
 /**
- * @Author SuJianFeng
- * @Date 2022/9/2
- * @Description
+ * author SuJianFeng
+ * createTime 2022/9/2
+ * description
  **/
 public class BuildModelVoUtils {
     public static void buildModelVO(String fileName, String basePackage, String voPackage, MySqlTable table, String className) throws Exception {
@@ -27,9 +27,9 @@ public class BuildModelVoUtils {
                 .appendFR("import %s.*", basePackage)
                 .appendRow("")
                 .appendRow("/**")
-                .appendRow(" * @Author GenerateModelBuilder")
-                .appendRow(" * @Date " + DateTimeUtils.getDateTimeShow())
-                .appendRow(" * @Description 读取数据库生成的实体模型代码，仅不存在时生成，可修改")
+                .appendRow(" * author GenerateModelBuilder")
+                .appendRow(" * createTime " + DateTimeUtils.getDateTimeShow())
+                .appendRow(" * description 读取数据库生成的实体模型代码，仅不存在时生成，可修改")
                 .appendRow(" **/")
                 .appendFR("@ApiModel(\"%sVO\")", table.getTableComment())
                 .appendFR("@TbTableUuid(table = \"%s\")", table.getTableName())

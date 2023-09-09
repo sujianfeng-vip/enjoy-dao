@@ -9,9 +9,8 @@ import java.util.Arrays;
 import java.util.function.Consumer;
 
 /**
- * @Author Xiao-Bai
- * @Date 2022/5/19 16:10
- * @Desc：中间层条件适配器
+ * author Xiao-Bai
+ * createTime 2022/5/19 16:10
  **/
 @SuppressWarnings("unchecked")
 public class ConditionAdapter<T, Children> extends ConditionAssembly<T, SFunction<T, ?>, Children> {
@@ -169,9 +168,6 @@ public class ConditionAdapter<T, Children> extends ConditionAssembly<T, SFunctio
         return adapter(DbSymbol.ORDER_BY, condition, field);
     }
 
-    /**
-     * sql排序函数执行方法
-     */
     private Children doOrderBySqlFunc(SqlOrderBy orderBy, Consumer<OrderByFunc<T>> consumer) {
         OrderByFunc<T> sqlFunc = new OrderByFunc<>(getEntityClass(), orderBy);
         consumer.accept(sqlFunc);

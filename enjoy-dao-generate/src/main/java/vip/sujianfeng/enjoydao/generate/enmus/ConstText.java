@@ -1,9 +1,9 @@
 package vip.sujianfeng.enjoydao.generate.enmus;
 
 /**
- * @Author SuJianFeng
- * @Date 2023/6/23
- * @Description
+ * author SuJianFeng
+ * createTime 2023/6/23
+ * description
  **/
 public enum ConstText {
 

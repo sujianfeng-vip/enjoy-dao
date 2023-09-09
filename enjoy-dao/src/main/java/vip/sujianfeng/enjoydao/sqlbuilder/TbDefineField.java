@@ -12,8 +12,8 @@ import static vip.sujianfeng.utils.comm.StringUtilsEx.isNotEmpty;
 
 
 /**
- * @Author SuJianFeng
- * @Date 2019/1/30 11:46
+ * author SuJianFeng
+ * createTime 2019/1/30 11:46
  * 实体字段定义
  **/
 public class TbDefineField {

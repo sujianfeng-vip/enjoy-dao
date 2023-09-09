@@ -5,9 +5,9 @@ import vip.sujianfeng.enjoydao.annotations.TbTableUuid;
 import vip.sujianfeng.enjoydao.model.AbstractBizModel;
 
 /**
- * @Author SuJianFeng
- * @Date 2022/6/21
- * @Description
+ * author SuJianFeng
+ * createTime 2022/6/21
+ * description
  **/
 @TbTableUuid(table = "test1")
 public class DemoTable extends AbstractBizModel {

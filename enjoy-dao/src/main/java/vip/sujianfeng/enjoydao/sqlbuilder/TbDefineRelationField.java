@@ -8,8 +8,8 @@ import vip.sujianfeng.enjoydao.enums.TbDefineFieldType;
 import java.lang.reflect.Field;
 
 /**
- * @Author SuJianFeng
- * @Date 2019/2/2 17:24
+ * author SuJianFeng
+ * createTime 2019/2/2 17:24
  * 关联字段定义
  **/
 public class TbDefineRelationField {

@@ -9,15 +9,12 @@ import java.sql.Connection;
 import java.sql.SQLException;
 
 /**
- * @author SuJianFeng
- * @date 2019/12/24 14:35
+ * author SuJianFeng
+ * createTime 2019/12/24 14:35
  **/
 public abstract class JdbcActionTbDao {
     private static Logger logger = LoggerFactory.getLogger(JdbcActionTbDao.class);
     private SqlAdapter sqlAdapter;
-    /**
-     * 线程隔离连接
-     */
     private ThreadLocal<Connection> THREAD_LOCAL_CONN = new ThreadLocal<>();
     private DataSource dataSource;
 
@@ -26,10 +23,6 @@ public abstract class JdbcActionTbDao {
         this.dataSource = dataSource;
     }
 
-    /**
-     * 获取的连接要线程隔离，避免多线程环境下互相影响
-     * @return
-     */
     private Connection getConn() throws SQLException {
         Connection result = THREAD_LOCAL_CONN.get();
         if (result == null || result.isClosed()){
@@ -49,7 +42,6 @@ public abstract class JdbcActionTbDao {
             return action.consumeAction(connection);
         } finally {
             if (connection != null && connection.getAutoCommit()){
-                //如果是自动提交，那么关闭连接
                 connection.close();
             }
         }
@@ -69,9 +61,6 @@ public abstract class JdbcActionTbDao {
         }
     }
 
-    /**
-     * 开始事务
-     */
     public void beginTrans() {
         try {
             DbUtils.beginTransaction(getConn());
@@ -80,9 +69,6 @@ public abstract class JdbcActionTbDao {
         }
     }
 
-    /**
-     * 提交事务
-     */
     public void commitTrans() {
         try {
             Connection connection = getConn();
@@ -93,9 +79,6 @@ public abstract class JdbcActionTbDao {
         }
     }
 
-    /**
-     * 回滚事务
-     */
     public void rollBackTrans() {
         try {
             Connection connection = getConn();

@@ -26,8 +26,8 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * @author SuJianFeng
- * @date 2019/12/24 13:55
+ * author SuJianFeng
+ * createTime 2019/12/24 13:55
  **/
 public abstract class JdbcTbDao extends JdbcActionTbDao implements TbDao {
 
@@ -197,13 +197,6 @@ public abstract class JdbcTbDao extends JdbcActionTbDao implements TbDao {
         return executeSql(sqlParamsParser.getSql(), sqlParamsParser.getParamList().toArray());
     }
 
-    /**
-     * sql支持{xxx}格式的参数，自动替换为 ?
-     * @param sql
-     * @param paramObj
-     * @return
-     * @throws Exception
-     */
     public int executeSqlForName(String sql, Object paramObj) throws Exception {
         return dbConnAction(conn -> {
             SqlParamsParser sqlParamsParser = new SqlParamsParser(sql, paramObj);
@@ -358,13 +351,6 @@ public abstract class JdbcTbDao extends JdbcActionTbDao implements TbDao {
         return selectListBySql( sqlParamsParser.getSql(), sqlParamsParser.getParamList().toArray());
     }
 
-    /**
-     * 查询列定义
-     * @param sql
-     * @param paramObj
-     * @return
-     * @throws Exception
-     */
     public List<DbColumn> queryDbColumnDefinesBySqlForName(String sql, Object paramObj) throws Exception {
         SqlParamsParser sqlParamsParser = new SqlParamsParser(sql, paramObj);
         return queryDbColumnDefinesBySql(sqlParamsParser.getSql(), sqlParamsParser.getParamList().toArray());
@@ -525,7 +511,7 @@ public abstract class JdbcTbDao extends JdbcActionTbDao implements TbDao {
         if (list.size() == 0) {
             return null;
         } else if (list.size() > 1) {
-            throw new CustomCheckException("查询一条结果，却获取到" + list.size() + "条");
+            throw new CustomCheckException("Query a result but obtain" + list.size());
         }
         return list.get(0);
     }
@@ -534,7 +520,7 @@ public abstract class JdbcTbDao extends JdbcActionTbDao implements TbDao {
     public <T> TbPageRows<T> selectPageRows(ConditionWrapper<T> wrapper) throws Exception {
         Asserts.notNull(wrapper);
         if(!wrapper.hasPageParams()) {
-            throw new CustomCheckException("Missing paging parameter：pageIndex：%s, pageSize：%s", wrapper.getPageIndex(), wrapper.getPageSize());
+            throw new CustomCheckException("Missing paging parameter:pageIndex:%s, pageSize:%s", wrapper.getPageIndex(), wrapper.getPageSize());
         }
         String joinTableSql = getJoinTableSql(wrapper);
         ThisQuery thisQuery = new ThisQuery(wrapper, joinTableSql);

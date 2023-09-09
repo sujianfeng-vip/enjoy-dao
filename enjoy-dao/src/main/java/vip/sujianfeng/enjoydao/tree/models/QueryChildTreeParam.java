@@ -10,11 +10,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @Author SuJianFeng
- * @Date 2022/9/27
- * @Description
+ * author SuJianFeng
+ * createTime 2022/9/27
  **/
-@ApiModel("查询子树条件")
+@ApiModel("Query subtree conditions")
 public class QueryChildTreeParam<T extends TreeData> implements TreeNodeFilter<T> {
 
     @Override
@@ -26,7 +25,7 @@ public class QueryChildTreeParam<T extends TreeData> implements TreeNodeFilter<T
         if (parentIds.size() > 0) {
             tmpList.addAll(parentIds);
         }
-        //多个父节点时，父节点本身也要纳入，直接子节点才有归属
+        //When there are multiple parent nodes, the parent node itself must also be included in order for direct child nodes to have ownership
         if (tmpList.size() > 1) {
             for (String tmpId : tmpList) {
                 if (StringUtilsEx.sameText(tmpId, currNode.getValue())) {
@@ -35,7 +34,7 @@ public class QueryChildTreeParam<T extends TreeData> implements TreeNodeFilter<T
             }
         }
         if (oneLevel) {
-            //只取一层
+            // Take only one layer
             for (String tmpId : tmpList) {
                 if (StringUtilsEx.sameText(currNode.getParentId(), tmpId)) {
                     return true;
@@ -44,7 +43,7 @@ public class QueryChildTreeParam<T extends TreeData> implements TreeNodeFilter<T
             return false;
         }
         if (tmpList.size() == 0) {
-            //取全部
+            // Take All
             return true;
         }
         for (String tmpId : tmpList) {
@@ -59,7 +58,7 @@ public class QueryChildTreeParam<T extends TreeData> implements TreeNodeFilter<T
                 }
                 return false;
             }
-            if (!StringUtilsEx.sameText(currNode.getValue(), tmpId) //不包含指根节点
+            if (!StringUtilsEx.sameText(currNode.getValue(), tmpId)
                     && TreeUtils.isInTree(rootNode, currNode.getValue())) {
                 return true;
             }
@@ -68,11 +67,11 @@ public class QueryChildTreeParam<T extends TreeData> implements TreeNodeFilter<T
     }
 
 
-    @ApiModelProperty("父节点id（如果parentIds和parentId同时为空表示整棵树）")
+    @ApiModelProperty("Parent node ID (if parentIds and parentId are both empty, it represents the entire tree)")
     private String parentId;
-    @ApiModelProperty("父节点列表（如果parentIds和parentId同时存在，那么数据会合并）")
+    @ApiModelProperty("Parent node list (if parentIds and parentId both exist, the data will be merged)")
     private List<String> parentIds = new ArrayList<>();
-    @ApiModelProperty("是否只取一级")
+    @ApiModelProperty("Whether to take only one level")
     private boolean oneLevel;
 
     public String getParentId() {

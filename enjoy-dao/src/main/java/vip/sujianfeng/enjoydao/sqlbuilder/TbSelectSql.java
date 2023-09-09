@@ -7,8 +7,8 @@ import vip.sujianfeng.utils.comm.StringUtilsEx;
 import vip.sujianfeng.enjoydao.interfaces.SqlAdapter;
 
 /**
- * @Author SuJianFeng
- * @Date 2019/1/30 11:45
+ * author SuJianFeng
+ * createTime 2019/1/30 11:45
  **/
 public class TbSelectSql extends TbTableSql {
 
@@ -28,10 +28,6 @@ public class TbSelectSql extends TbTableSql {
     private String orderBy;
     private String[] selectFields;
 
-    /**
-     * 获取join这部分的sql
-     * @return
-     */
     public String getJoinTableSql(){
         StringBuilderEx sql= new StringBuilderEx();
         for (TbDefineRelationField rlsField: getRlsFieldList()){
@@ -43,10 +39,6 @@ public class TbSelectSql extends TbTableSql {
         return sql.toString();
     }
 
-    /**
-     * 取得select字段的这部分sql
-     * @return
-     */
     public String getSelectSql(){
         boolean all = selectFields == null || selectFields.length == 0;
         StringBuilderEx sql= new StringBuilderEx();

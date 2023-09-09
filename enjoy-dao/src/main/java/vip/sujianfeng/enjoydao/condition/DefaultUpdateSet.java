@@ -3,9 +3,8 @@ package vip.sujianfeng.enjoydao.condition;
 import java.util.function.Consumer;
 
 /**
- * @Author Xiao-Bai
- * @Date 2022/8/6 18:06
- * @Desc
+ * author Xiao-Bai
+ * createTime 2022/8/6 18:06
  */
 public class DefaultUpdateSet<T> extends AbstractUpdateSet<T>
         implements UpdateSet<DefaultUpdateSet<T>, UpdateSqlSet<String, DefaultUpdateSetSqlSetter<T>>, DefaultConditionWrapper<T>> {

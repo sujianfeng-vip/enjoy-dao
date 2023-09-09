@@ -3,9 +3,9 @@ package vip.sujianfeng.enjoydao.sqlcondition;
 import com.alibaba.fastjson.JSON;
 
 /**
- * @Author SuJianFeng
- * @Date 2022/9/2
- * @Description
+ * author SuJianFeng
+ * createTime 2022/9/2
+ * description
  **/
 public class UserInfoCU extends SqlConditionBuilder<UserInfoCU> {
 

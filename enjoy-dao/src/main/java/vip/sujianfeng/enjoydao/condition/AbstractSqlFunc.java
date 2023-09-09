@@ -13,100 +13,44 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 /**
- * @Author Xiao-Bai
- * @Date 2022/3/19 17:28
- * @Desc：sql函数方法
+ * author Xiao-Bai
+ * createTime 2022/3/19 17:28
  **/
 @SuppressWarnings("all")
 public abstract class AbstractSqlFunc<T, Children> {
 
-    /**
-     * sql sum函数
-     * 例：x -> x.sum(Student::getAge)
-     * @param column 需要求和的属性 Student::getAge
-     * @return SqlFunc
-     */
+
     public abstract Children sum(SFunction<T, ?> column);
     public abstract Children sum(boolean isNullToZero, SFunction<T, ?> column);
 
 
-    /**
-     * sql sum函数
-     * 例：x -> x.avg(Student::getAge)
-     * @param column 需要求平均的属性 Student::getAge
-     * @return SqlFunc
-     */
     public abstract Children avg(SFunction<T, ?> column);
     public abstract Children avg(boolean isNullToZero, SFunction<T, ?> column);
 
-
-    /**
-     * sql count函数
-     * 例：x -> x.count(Student::getAge, true, Student::getCountAge)
-     * @param column 需要求和的字段属性 Student::getAge
-     * @param distinct 是否去重？
-     * @return SqlFunc
-     */
     public Children count(SFunction<T, ?> column) {
         return count(column, false);
     }
     public abstract Children count(SFunction<T, ?> column, boolean distinct);
 
-
-    /**
-     * sql ifnull函数
-     * 例：x -> x.ifNull(Student::getAge, 0)
-     * @param column 实体::get属性方法 Student::getAge
-     * @param elseVal 为空时的替代值
-     * @return SqlFunc
-     */
     public abstract Children ifNull(SFunction<T, ?> column, Object elseVal);
 
-
-    /**
-     * sql max函数
-     * 例：x -> x.max(Student::getAge)
-     * @param column 实体::get属性方法 Student::getAge
-     * @return SqlFunc
-     */
     public abstract Children max(SFunction<T, ?> column);
     public abstract Children max(boolean isNullToZero, SFunction<T, ?> column);
 
-
-    /**
-     * sql min函数
-     * 例：x -> x.min(Student::getAge)
-     * @param column 实体::get属性方法 Student::getAge
-     * @return SqlFunc
-     */
     public abstract Children min(SFunction<T, ?> column);
     public abstract Children min(boolean isNullToZero, SFunction<T, ?> column);
 
-
-    /**
-     * SFunction接口实体字段解析对象
-     */
     private ColumnParseHandler<T> columnParseHandler;
-    /**
-     * 实体字段到表字段的映射缓存
-     */
+
     private Map<String, String> fieldMapper;
-    /**
-     * 表字段到实体字段的映射缓存
-     */
+
     private Map<String, String> columnMapper;
-    /**
-     * sql片段
-     */
+
     private List<String> sqlFragments;
 
-    /**
-     * 主表的别名
-     */
     private String alias;
 
 
-    // 初始化
     protected void initNeed(Class<T> cls) {
         TableSupport tableSupport = new TableSimpleSupport<>(cls);
         columnParseHandler = new DefaultColumnParseHandler<>(cls, tableSupport);
@@ -116,10 +60,6 @@ public abstract class AbstractSqlFunc<T, Children> {
         sqlFragments = new ArrayList<>();
     }
 
-
-    /**
-     * 获取格式化的sql函数模板
-     */
     protected String formatRex(SqlAggregate aggregate, Boolean distinct) {
         return formatRex(aggregate, false, distinct);
     }
@@ -148,12 +88,6 @@ public abstract class AbstractSqlFunc<T, Children> {
     }
 
 
-    /**
-     * 适配函数的拼接
-     * @param format 格式化的函数
-     * @param params 参数
-     * @return SqlFunc
-     */
     protected Children doFunc(String format, Object... params) {
         sqlFragments.add(String.format(format, params));
         return childrenClass;

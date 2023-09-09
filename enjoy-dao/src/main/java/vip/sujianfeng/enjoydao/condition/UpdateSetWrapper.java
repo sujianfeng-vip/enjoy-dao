@@ -10,27 +10,18 @@ import java.util.List;
 import java.util.StringJoiner;
 
 /**
- * @Author Xiao-Bai
- * @Date 2022/8/6 17:45
- * @Desc
+ * author Xiao-Bai
+ * createTime 2022/8/6 17:45
  */
 public abstract class UpdateSetWrapper<T> {
 
-    /**
-     * sql片段
-     */
+
     private final StringJoiner sqlSetter;
-    /**
-     * set的参数值
-     */
+
     private final List<Object> setParams;
-    /**
-     * 实体Class对象
-     */
+
     private final Class<T> entityClass;
-    /**
-     * SFunction接口实体字段解析对象
-     */
+
     private final ColumnParseHandler<T> columnParseHandler;
 
     public List<Object> getSetParams() {

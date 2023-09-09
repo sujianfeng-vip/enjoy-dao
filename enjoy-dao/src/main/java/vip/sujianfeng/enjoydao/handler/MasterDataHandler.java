@@ -19,9 +19,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @Author SuJianFeng
- * @Date 2022/9/21
- * @Description 主数据集处理
+ * author SuJianFeng
+ * createTime 2022/9/21
  **/
 public class MasterDataHandler<T extends AbstractOpModel, P extends PageParam> {
 
@@ -73,7 +72,7 @@ public class MasterDataHandler<T extends AbstractOpModel, P extends PageParam> {
         return proc(jdbcDao, it -> {
             T item = jdbcDao.selectOneByUuId(modelClass, oneIdParam.getId());
             if (item == null) {
-                it.error("此id不存在：%s", oneIdParam.getId());
+                it.error("This ID does not exist:%s", oneIdParam.getId());
                 return;
             }
             it.setData(item);

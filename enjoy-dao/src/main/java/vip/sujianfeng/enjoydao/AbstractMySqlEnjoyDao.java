@@ -20,10 +20,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author SuJianFeng
- * @date 2019/8/29 15:17
- * 1、主键固定为guid字符串
- * 2、包含固定字段：create_time, update_time，类型均为时间戳， state（状态 int）
+ * author SuJianFeng
+ * createTime 2019/8/29 15:17
  **/
 public abstract class AbstractMySqlEnjoyDao extends JdbcTbDao {
 
