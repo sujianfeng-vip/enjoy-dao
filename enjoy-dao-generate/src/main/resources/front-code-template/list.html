@@ -3,16 +3,148 @@
 <head>
     <meta charset="UTF-8">
     <th:block th:include="comm/head.html :: include" />
+
+    <script th:inline="javascript">
+        var moduleApi = /*[[${moduleApi}]]*/ "";
+        var moduleCode = /*[[${moduleCode}]]*/ "";
+        store.keyword = "";
+        store.modalEdit = false
+        store.formItem = {}
+        store.pageNo = 1;
+        store.totalSize = 0;
+        store.rows = [];
+
+        store.columns = [
+{{tableColumns}}
+            {title: '{{OpLabel}}', key: 'action', width: 200,
+                render: function (h, p) {
+                    return h('div', [
+                            h('Button', {
+                                props: {
+                                    type: '',
+                                    size: 'small'
+                                },
+                                style: {
+                                    marginRight: '5px'
+                                },
+                                on: {
+                                    click: function () {
+                                        methods.edit(p.row);
+                                    }
+                                }
+                            }, '{{ModifyLabel}}'),
+                            h('Button', {
+                                props: {
+                                    type: 'error',
+                                    size: 'small'
+                                },
+                                style: {
+                                    marginRight: '5px'
+                                },
+                                on: {
+                                    click: function () {
+                                        methods.delete(p.row);
+                                    }
+                                }
+                            }, '{{DeleteLabel}}')
+                        ]
+                    );
+                }
+            }
+        ];
+        methods.loadPageData = function(pageNo) {
+            var param = {
+                systemId: store.systemId,
+                keyword: store.keyword,
+                pageNo: pageNo,
+                pageSize: 15
+            };
+            httpClient.postJson(`/${moduleApi}/queryPage`,  param ,function(op){
+                if (!op.success){
+                    window.vue.$Notice.error({title: '{{SystemError}}', desc: op.message})
+                    setTimeout(function (){
+                        window.vue.$Loading.error();
+                    }, 100)
+                    return;
+                }
+                store.rows = op.data.rows;
+                store.totalSize = op.data.totalSize;
+            })
+            store.pageNo = pageNo;
+        }
+        methods.addNew = function() {
+            window.parent.callCommForm("{{AddLabel}}", `/${moduleCode}/edit`, 500, 500)
+        }
+        methods.edit = function(row) {
+            window.parent.callCommForm("{{ModifyLabel}}", `/${moduleCode}/edit?id=${row.id}`, 500, 500)
+        }
+        methods.delete = function(row) {
+            var param = {
+                ids: [row.id]
+            }
+            window.parent.confirmForm("{{HintLabel}}", "{{ConfirmDeleteRowHint}}", function(){
+                httpClient.postJson(`/${moduleApi}/delete`,  param ,function(op){
+                    if (!op.success){
+                        window.vue.$Notice.error({title: '{{SystemError}}', desc: op.message})
+                        setTimeout(function (){
+                            window.vue.$Loading.error();
+                        }, 100)
+                        return;
+                    }
+                    window.vue.$Notice.info({title: '{{DeleteSuccessHint}}'})
+                    methods.loadPageData(store.pageNo)
+                })
+            })
+        }
+        methods.save = function() {
+            httpClient.postJson(`/${moduleApi}/save`, store.formItem ,function(op){
+                if (!op.success){
+                    window.vue.$Notice.error({title: '{{SystemError}}', desc: op.message})
+                    setTimeout(function (){
+                        window.vue.$Loading.error();
+                    }, 100)
+                    return;
+                }
+                window.vue.$Notice.info({title: '{{SaveSuccess}}'})
+                store.modalEdit = false
+                methods.loadPageData(store.pageNo)
+            })
+        }
+        methods.cancel = function() {
+
+        }
+        methods.pageChange = function (pageNo) {
+            methods.loadPageData(pageNo);
+        };
+
+        $(function(){
+            setTimeout(function(){
+                methods.loadPageData(1);
+            }, 500);
+        });
+
+    </script>
 </head>
 <body>
 
 <div id="app">
-    <th:block th:include="${moduleCode} + '/list/data.html' :: parts" />
-    <th:block th:include="${moduleCode} + '/list/methods.html' :: parts" />
-    <th:block th:include="${moduleCode} + '/list/columns.html' :: parts" />
-    <th:block th:include="${moduleCode} + '/list/ready.html' :: parts" />
-    <th:block th:include="${moduleCode} + '/list/toolbar.html' :: parts" />
-    <th:block th:include="${moduleCode} + '/list/table.html' :: parts" />
+    <div class="detailToolBar">
+        <i-form inline >
+            <Row>
+                <form-item>
+                    <i-input v-model="keyword"  placeholder="{{InputKeywordHint}}" style="width: 200px"/>
+                </form-item>
+                <form-item>
+                    <i-button @click = "loadPageData(1);">{{SearchLabel}}</i-button>
+                    <i-button @click = "addNew();">{{AddLabel}}</i-button>
+                </form-item>
+            </Row>
+        </i-form>
+    </div>
+    <i-table highlight-row ref="currentRowTable" :columns="columns" :data="rows"></i-table>
+    <div style="width: 100%; text-align: center">
+        <Page :total="totalSize" :page-size="15" :current="pageNo" show-total @on-change="pageChange"/>
+    </div>
 </div>
 
 </body>
