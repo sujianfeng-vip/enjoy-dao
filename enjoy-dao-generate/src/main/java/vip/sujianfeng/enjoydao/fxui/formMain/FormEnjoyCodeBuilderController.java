@@ -43,8 +43,10 @@ public class FormEnjoyCodeBuilderController extends FxBaseController {
     @Override
     public void loadPageData(Object... params) {
         super.loadPageData(params);
-        edtFrontPath.setText(MainApp.CONFIG.getCodeBuilder().getFrontPath());
-        edtBackPath.setText(MainApp.CONFIG.getCodeBuilder().getBackPath());
+        if (MainApp.CONFIG.getCodeBuilder() != null) {
+            edtFrontPath.setText(MainApp.CONFIG.getCodeBuilder().getFrontPath());
+            edtBackPath.setText(MainApp.CONFIG.getCodeBuilder().getBackPath());
+        }
     }
 
     public void clickBuild() throws Exception {

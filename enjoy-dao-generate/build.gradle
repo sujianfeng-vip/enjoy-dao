@@ -13,17 +13,17 @@ jar {
 }
 
 dependencies {
-    implementation 'vip.sujianfeng:enjoy-utils:1.0.1'
-    implementation 'vip.sujianfeng:enjoy-fxui:1.0.1'
-    implementation 'vip.sujianfeng:enjoy-dao:1.0.1'
-    implementation 'com.fasterxml.jackson.core:jackson-annotations:2.13.3'
-    implementation 'com.alibaba:fastjson:2.0.7'
-    implementation 'org.slf4j:slf4j-api:1.7.36'
-    implementation 'ch.qos.logback:logback-classic:1.2.3'
+    compile 'vip.sujianfeng:enjoy-utils:1.0.1'
+    compile 'vip.sujianfeng:enjoy-fxui:1.0.1'
+    compile 'vip.sujianfeng:enjoy-dao:1.0.1'
+    compile 'com.fasterxml.jackson.core:jackson-annotations:2.13.3'
+    compile 'com.alibaba:fastjson:2.0.7'
+    compile 'org.slf4j:slf4j-api:1.7.36'
+    compile 'ch.qos.logback:logback-classic:1.2.3'
 
-    implementation 'mysql:mysql-connector-java:8.0.21'
-    implementation 'com.alibaba:druid:1.1.17'
-    implementation 'vip.sujianfeng:enjoy-data-source:1.0.1'
+    compile 'mysql:mysql-connector-java:8.0.21'
+    compile 'com.alibaba:druid:1.1.17'
+    compile 'vip.sujianfeng:enjoy-data-source:1.0.1'
 
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
