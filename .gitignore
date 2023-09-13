@@ -9,3 +9,4 @@ build
 /doc/ui编辑器/*.msi
 /tools/*.jar
 /00_models
+80_web

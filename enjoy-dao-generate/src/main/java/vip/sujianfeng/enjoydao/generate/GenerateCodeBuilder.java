@@ -25,6 +25,7 @@ public class GenerateCodeBuilder extends BaseCodeBuilder {
         new BackApiBuilder(getJdbcDao(), this.getLogEvent(), config, tableName, title).buildCodeFile(coverIfExist);
         new BackPageParamBuilder(getJdbcDao(), this.getLogEvent(), config, tableName, title).buildCodeFile(coverIfExist);
         new BackViewControllerBuilder(getJdbcDao(), this.getLogEvent(), config, tableName, title).buildCodeFile(coverIfExist);
+        new FrontRootEditHtmlBuilder(getJdbcDao(), this.getLogEvent(), config, tableName, title).buildCodeFile(coverIfExist);
         new FrontRootListHtmlBuilder(getJdbcDao(), this.getLogEvent(), config, tableName, title).buildCodeFile(coverIfExist);
     }
 
