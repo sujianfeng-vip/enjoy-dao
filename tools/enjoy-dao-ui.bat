@@ -1,3 +1,3 @@
 
-java -jar ../output/jars/enjoy-dao-ui-1.0.7.jar ./enjoy-dao-ui.yml
+java -jar ../output/jars/enjoy-dao-ui-1.0.8.jar ./enjoy-dao-ui.yml
 
