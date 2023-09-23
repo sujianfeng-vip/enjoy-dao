@@ -15,18 +15,27 @@ import java.io.IOException;
  **/
 public class GenerateCodeBuilder extends BaseCodeBuilder {
     public boolean coverIfExist;
+    public boolean frontCode;
+    public boolean backCode;
 
-    public GenerateCodeBuilder(JdbcTbDao jdbcDao, CommEvent<String> logEvent, boolean coverIfExist) {
+
+    public GenerateCodeBuilder(JdbcTbDao jdbcDao, CommEvent<String> logEvent, boolean coverIfExist, boolean frontCode, boolean backCode) {
         super(jdbcDao, logEvent);
         this.coverIfExist = coverIfExist;
+        this.backCode = backCode;
+        this.frontCode = frontCode;
     }
 
     public void build(ConfigParam config, String tableName, String title) throws IOException {
-        new BackApiBuilder(getJdbcDao(), this.getLogEvent(), config, tableName, title).buildCodeFile(coverIfExist);
-        new BackPageParamBuilder(getJdbcDao(), this.getLogEvent(), config, tableName, title).buildCodeFile(coverIfExist);
-        new BackViewControllerBuilder(getJdbcDao(), this.getLogEvent(), config, tableName, title).buildCodeFile(coverIfExist);
-        new FrontRootEditHtmlBuilder(getJdbcDao(), this.getLogEvent(), config, tableName, title).buildCodeFile(coverIfExist);
-        new FrontRootListHtmlBuilder(getJdbcDao(), this.getLogEvent(), config, tableName, title).buildCodeFile(coverIfExist);
+        if (this.backCode) {
+            new BackApiBuilder(getJdbcDao(), this.getLogEvent(), config, tableName, title).buildCodeFile(coverIfExist);
+            new BackPageParamBuilder(getJdbcDao(), this.getLogEvent(), config, tableName, title).buildCodeFile(coverIfExist);
+        }
+        if (this.frontCode) {
+            new BackViewControllerBuilder(getJdbcDao(), this.getLogEvent(), config, tableName, title).buildCodeFile(coverIfExist);
+            new FrontRootEditHtmlBuilder(getJdbcDao(), this.getLogEvent(), config, tableName, title).buildCodeFile(coverIfExist);
+            new FrontRootListHtmlBuilder(getJdbcDao(), this.getLogEvent(), config, tableName, title).buildCodeFile(coverIfExist);
+        }
     }
 
 }

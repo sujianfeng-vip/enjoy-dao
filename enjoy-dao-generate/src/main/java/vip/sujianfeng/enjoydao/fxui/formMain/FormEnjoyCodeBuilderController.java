@@ -32,6 +32,8 @@ public class FormEnjoyCodeBuilderController extends FxBaseController {
     public TextField edtBackPath;
     public TextField edtFrontPath;
     public CheckBox chkCoverIfExist;
+    public CheckBox chkBackCode;
+    public CheckBox chkFrontCode;
 
     CommEvent<String> log = txt -> {
         Platform.runLater(()->{
@@ -64,7 +66,7 @@ public class FormEnjoyCodeBuilderController extends FxBaseController {
                 ConfigParam config = MainApp.CONFIG.cloneSelf();
                 config.getCodeBuilder().setFrontPath(edtFrontPath.getText());
                 config.getCodeBuilder().setBackPath(edtBackPath.getText());
-                new GenerateCodeBuilder(MainApp.TB_DAO, log, chkCoverIfExist.isSelected()).build(config, table, title);
+                new GenerateCodeBuilder(MainApp.TB_DAO, log, chkCoverIfExist.isSelected(), chkFrontCode.isSelected(), chkBackCode.isSelected()).build(config, table, title);
             }finally {
                 log.call(String.format("表[%s]处理结束!", table));
             }
